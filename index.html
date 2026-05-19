@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tetinlab | カクテルデータベース・Androidゲーム・Unity開発ポートフォリオ</title>
+<title>Tetinlab | Unity開発・ゲーム制作・AI実験の個人開発ブログ</title>
+<meta name="description" content="Tetinlabは、Unityを用いた2Dゲーム開発、ブラウザゲーム制作、AI技術の実験記録を発信する個人開発ブログです。Flare Engine解説やカクテルデータベースなど独自コンテンツを公開中。">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2077000524682922"
      crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -353,6 +354,130 @@
     from { transform: translateX(100vw); }
     to { transform: translateX(-100%); }
   }
+
+  /* ── Global Nav Links ── */
+  .nav-links {
+    display: flex; gap: 20px; align-items: center;
+  }
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    text-decoration: none;
+    padding: 4px 8px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s, text-shadow 0.2s;
+  }
+  .nav-links a:hover {
+    border-color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
+  }
+  @media (max-width: 768px) {
+    nav { flex-wrap: wrap; gap: 8px; padding: 12px 16px; }
+    .nav-logo { font-size: 14px; width: 100%; text-align: center; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 8px; width: 100%; }
+    .nav-tag { display: none; }
+  }
+
+  /* ── About Section ── */
+  .about-section {
+    position: relative; z-index: 2;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+  }
+  .about-box {
+    border: 3px solid var(--neon-cyan);
+    box-shadow: 6px 6px 0 var(--neon-cyan);
+    padding: 40px;
+    background: rgba(20, 8, 50, 0.9);
+  }
+  .about-box .section-tag {
+    font-size: 9px; letter-spacing: 6px;
+    color: var(--neon-cyan); margin-bottom: 16px;
+  }
+  .about-box h2 {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 22px; font-weight: 900;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px rgba(0,245,255,0.5);
+    margin-bottom: 24px;
+  }
+  .about-content {
+    font-size: 12px; line-height: 2;
+    color: rgba(240,230,255,0.8);
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .about-content dt {
+    color: var(--neon-cyan); letter-spacing: 2px; margin-bottom: 6px;
+  }
+  .about-content dd { margin-left: 0; }
+
+  /* ── Contact Section ── */
+  .contact-section {
+    position: relative; z-index: 2;
+    max-width: 800px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+  }
+  .contact-box {
+    border: 3px solid var(--neon-yellow);
+    box-shadow: 6px 6px 0 var(--neon-yellow);
+    padding: 40px;
+    background: rgba(20, 8, 50, 0.9);
+  }
+  .contact-box .section-tag {
+    font-size: 9px; letter-spacing: 6px;
+    color: var(--neon-yellow); margin-bottom: 16px;
+  }
+  .contact-box h2 {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 22px; font-weight: 900;
+    color: var(--neon-yellow);
+    text-shadow: 0 0 8px rgba(255,230,0,0.5);
+    margin-bottom: 24px;
+  }
+  .contact-form {
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .contact-form label {
+    font-size: 11px; letter-spacing: 2px;
+    color: var(--neon-yellow); display: block; margin-bottom: 6px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(0,0,0,0.4);
+    border: 2px solid rgba(255,230,0,0.3);
+    color: var(--text);
+    font-family: 'DotGothic16', monospace;
+    font-size: 13px;
+    transition: border-color 0.2s;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--neon-yellow);
+    box-shadow: 0 0 8px rgba(255,230,0,0.3);
+  }
+  .contact-form textarea { min-height: 120px; resize: vertical; }
+  .contact-form button {
+    align-self: flex-start;
+    padding: 10px 28px;
+    background: transparent;
+    border: 2px solid var(--neon-yellow);
+    color: var(--neon-yellow);
+    font-family: 'DotGothic16', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .contact-form button:hover {
+    background: var(--neon-yellow);
+    color: var(--bg);
+  }
 </style>
 </head>
 <body>
@@ -368,8 +493,14 @@
 
 <!-- Nav -->
 <nav>
-  <div class="nav-logo">★ AIを活用して独自に構成・編集したクリエイティブ・ポートフォリオ ★</div>
-  <div class="nav-tag">PORTFOLIO.EXE</div>
+  <div class="nav-logo">★ TETINLAB ★</div>
+  <div class="nav-links">
+    <a href="#top">ホーム</a>
+    <a href="#projects">プロジェクト</a>
+    <a href="#about">運営者情報</a>
+    <a href="#contact">お問い合わせ</a>
+    <a href="#privacy">プライバシーポリシー</a>
+  </div>
 </nav>
 
 <!-- Marquee -->
@@ -380,7 +511,7 @@
 </div>
 
 <!-- Hero -->
-<section class="hero">
+<section class="hero" id="top">
 
   <!-- Pixel art hero illustration -->
   <div class="hero-pixel-art">
@@ -440,13 +571,13 @@
 </section>
 
 <!-- Section label -->
-<div class="section-label">── PROJECTS ──</div>
+<div class="section-label" id="projects">── PROJECTS ──</div>
 
 <!-- Cards -->
 <div class="cards-wrapper">
 
   <!-- Cocktail DB -->
-  <a class="card card--cocktail" href="#" onclick="return false;" id="card-cocktail">
+  <a class="card card--cocktail" href="https://tetin-a11.github.io/cocktail/" target="_blank" rel="noopener" id="card-cocktail">
     <div class="card-corner">01/03</div>
     <div class="card-art">
       <!-- Pixel cocktail bar scene -->
@@ -493,7 +624,7 @@
   </a>
 
   <!-- Short Video -->
-  <a class="card card--video" href="#" onclick="return false;" id="card-video">
+  <a class="card card--video" href="https://tetin-a11.github.io/movie.game/" target="_blank" rel="noopener" id="card-video">
     <div class="card-corner">02/03</div>
     <div class="card-art">
       <!-- Pixel video/film scene -->
@@ -541,7 +672,7 @@
   </a>
 
   <!-- Game Dev -->
-  <a class="card card--game" href="#" onclick="return false;" id="card-game">
+  <a class="card card--game" href="https://tetin-a11.github.io/unity/" target="_blank" rel="noopener" id="card-game">
     <div class="card-corner">03/03</div>
     <div class="card-art">
       <!-- Pixel game scene -->
@@ -600,6 +731,70 @@
 
 </div>
 
+<!-- About -->
+<div class="section-label">── ABOUT ──</div>
+<section class="about-section" id="about">
+  <div class="about-box">
+    <div class="section-tag">ABOUT</div>
+    <h2>運営者情報</h2>
+    <dl class="about-content">
+      <div>
+        <dt>■ 運営者</dt>
+        <dd>TETIN（個人運営）</dd>
+      </div>
+      <div>
+        <dt>■ サイト名</dt>
+        <dd>Tetinlab（テティンラボ）</dd>
+      </div>
+      <div>
+        <dt>■ サイトURL</dt>
+        <dd><a href="https://tetinlab.com/" style="color:var(--neon-cyan);text-decoration:none;border-bottom:1px solid var(--neon-cyan);">https://tetinlab.com/</a></dd>
+      </div>
+      <div>
+        <dt>■ 活動内容</dt>
+        <dd>普段は物流企業にてシステム管理を担当しています。本サイトでは、業務とは別軸で取り組んでいる個人開発の成果物を公開しています。主にUnityを用いた2Dゲーム開発、HTML/JavaScriptによるブラウザゲーム制作、AIを活用したコンテンツ生成の実験を行っています。</dd>
+      </div>
+      <div>
+        <dt>■ 専門分野・スキル</dt>
+        <dd>Unity（Flare Engine 2D Tools）／ HTML・CSS・JavaScript ／ Capacitorによるモバイルアプリ化 ／ ローカルLLM・自律型AIエージェント検証 ／ Raspberry Piを用いたポータブル環境構築 ／ システム運用・技術検証</dd>
+      </div>
+      <div>
+        <dt>■ 実績</dt>
+        <dd>
+          ・カクテルデータベース — AI画像生成と構造化データを組み合わせた100種類以上のカクテル情報サイト<br>
+          ・Flare Engine 2D Tools 初心者マニュアル — 日本語リファレンスが少ないUnity向け2Dツールの導入解説<br>
+          ・ハイパーカジュアルゲーム開発・公開（Google Play Store）
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- Contact -->
+<div class="section-label">── CONTACT ──</div>
+<section class="contact-section" id="contact">
+  <div class="contact-box">
+    <div class="section-tag">CONTACT</div>
+    <h2>お問い合わせ</h2>
+    <p style="font-size:12px;line-height:2;color:rgba(240,230,255,0.8);margin-bottom:24px;">当サイトに関するご意見・ご質問は、下記フォームよりお気軽にお問い合わせください。</p>
+    <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+      <div>
+        <label for="contact-name">■ お名前</label>
+        <input type="text" id="contact-name" name="name" required placeholder="お名前を入力してください">
+      </div>
+      <div>
+        <label for="contact-email">■ メールアドレス</label>
+        <input type="email" id="contact-email" name="email" required placeholder="メールアドレスを入力してください">
+      </div>
+      <div>
+        <label for="contact-message">■ お問い合わせ内容</label>
+        <textarea id="contact-message" name="message" required placeholder="お問い合わせ内容を入力してください"></textarea>
+      </div>
+      <button type="submit">► SEND MESSAGE</button>
+    </form>
+  </div>
+</section>
+
 <!-- Privacy Policy -->
 <section id="privacy" style="position:relative;z-index:2;max-width:800px;margin:0 auto 80px;padding:0 24px;">
   <div style="border:3px solid var(--neon-purple);box-shadow:6px 6px 0 var(--neon-purple);padding:40px;background:rgba(20,8,50,0.9);">
@@ -615,14 +810,14 @@
 
       <div>
         <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ アクセス解析ツールについて</p>
-        <p>当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用することがあります。このGoogleアナリティクスはデータ収集のためにCookieを使用しています。このデータは匿名で収集されており、個人を特定するものではありません。</p>
+        <p>当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。このGoogleアナリティクスはデータ収集のためにCookieを使用しています。このデータは匿名で収集されており、個人を特定するものではありません。Cookieの使用を無効にする場合は、ブラウザの設定からCookieを無効にしてください。詳細については<a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank" rel="noopener" style="color:var(--neon-cyan);text-decoration:none;border-bottom:1px solid var(--neon-cyan);">Googleアナリティクス利用規約</a>をご確認ください。</p>
       </div>
 
 　　　<div>
         <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ 広告の配信について</p>
-        <p>当サイトでは、第三者配信の広告サービス（Google AdSense）を利用する予定です、または利用しています。
-このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報 『Cookie』(氏名、住所、メール アドレス、電話番号は含まれません) を使用することがあります。
-またGoogleアドセンスに関して、このプロセスの詳細やこのような情報が広告配信事業者に使用されないようにする方法については、Googleポリシーと規約をご覧ください。</p>
+        <p>当サイトでは、第三者配信の広告サービス「Google AdSense」を利用しています。
+このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報（Cookie）を使用することがあります。なお、Cookieには氏名、住所、メールアドレス、電話番号は含まれません。
+Googleアドセンスに関して、このプロセスの詳細やこのような情報が広告配信事業者に使用されないようにする方法については、<a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener" style="color:var(--neon-cyan);text-decoration:none;border-bottom:1px solid var(--neon-cyan);">Googleポリシーと規約</a>をご覧ください。</p>
       </div>
       
       <div>
@@ -647,13 +842,8 @@
 
       <div style="padding-top:16px;border-top:1px solid rgba(191,95,255,0.3);">
         <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ お問い合わせ</p>
-        <p>当サイトに関するご意見・ご質問は下記までお願いいたします。</p>
-        <p style="margin-top:8px;">
-          <a href="/cdn-cgi/l/email-protection#e09a888599858a898e8c8f8e87a0878d81898cce838f8d" style="color:var(--neon-cyan);text-decoration:none;border-bottom:1px solid var(--neon-cyan);padding-bottom:2px;transition:text-shadow 0.2s;" onmouseover="this.style.textShadow='0 0 8px var(--neon-cyan)'" onmouseout="this.style.textShadow='none'">
-            <span class="__cf_email__" data-cfemail="a6dccec3dfc3cccfc8cac9c8c1e6c1cbc7cfca88c5c9cb">[email&#160;protected]</span>
-          </a>
-        </p>
-        <p style="margin-top:16px;font-size:11px;opacity:0.5;">制定日：2026年4月26日</p>
+        <p>当サイトに関するご意見・ご質問は、<a href="#contact" style="color:var(--neon-cyan);text-decoration:none;border-bottom:1px solid var(--neon-cyan);">お問い合わせフォーム</a>よりお願いいたします。</p>
+        <p style="margin-top:16px;font-size:11px;opacity:0.5;">制定日：2025年4月26日　／　最終更新日：2026年5月20日</p>
       </div>
 
     </div>
@@ -665,7 +855,7 @@
   <p>MADE WITH <span>♥</span> — 制作物ポートフォリオ &copy; 2026</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Generate pixel stars
 const starsEl = document.getElementById('stars');
 for (let i = 0; i < 80; i++) {
@@ -678,17 +868,6 @@ for (let i = 0; i < 80; i++) {
   if (Math.random() > 0.7) { s.style.width = '4px'; s.style.height = '4px'; }
   starsEl.appendChild(s);
 }
-
-// Card click — placeholder (replace href with actual URLs)
-document.getElementById('card-cocktail').addEventListener('click', () => {
-  window.open('https://tetin-a11.github.io/cocktail/', '_blank');
-});
-document.getElementById('card-video').addEventListener('click', () => {
-  window.open('https://tetin-a11.github.io/movie.game/', '_blank');
-});
-document.getElementById('card-game').addEventListener('click', () => {
-  window.open('https://tetin-a11.github.io/unity/', '_blank');
-});
 
 // Card entrance animation
 const cards = document.querySelectorAll('.card');
