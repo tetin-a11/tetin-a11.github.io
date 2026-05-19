@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2章 インストールと初期設定｜Flare Engine 初心者マニュアル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAFAF8;--bg-card:#FFFFFF;--bg-dark:#1A1D23;--bg-code:#F4F2ED;
+  --text:#2C2E33;--text-sub:#6B6E76;--text-inv:#F0EDE6;
+  --accent:#E85D3A;--accent-light:#FFF0EB;--accent-dark:#C24422;
+  --blue:#3B7DD8;--blue-light:#EBF2FC;
+  --green:#2D9D5A;--green-light:#E8F6EE;
+  --purple:#7C5CDB;--purple-light:#F0ECFB;
+  --yellow:#E5A820;--yellow-light:#FFF8E6;
+  --border:#E5E3DD;--border-strong:#CCC9C0;
+  --radius:10px;--radius-lg:16px;--radius-xl:24px;
+  --shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.04);
+  --shadow-lg:0 2px 8px rgba(0,0,0,0.06),0 8px 32px rgba(0,0,0,0.08);
+  --font-body:'Noto Sans JP','Outfit',sans-serif;
+  --font-head:'Outfit','Noto Sans JP',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.85;-webkit-font-smoothing:antialiased}
+
+/* --- Header hero --- */
+.hero{background:var(--bg-dark);color:var(--text-inv);padding:3.5rem 2rem 3rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(232,93,58,0.15) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-40%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(59,125,216,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:820px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,93,58,0.15);border:1px solid rgba(232,93,58,0.3);color:var(--accent);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;font-family:var(--font-head)}
+.hero h1{font-family:var(--font-head);font-size:2.4rem;font-weight:800;line-height:1.25;letter-spacing:-0.02em;margin-bottom:0.6rem}
+.hero h1 span{color:var(--accent)}
+.hero-sub{font-size:1.05rem;color:rgba(240,237,230,0.7);font-weight:300;line-height:1.7;max-width:600px}
+
+/* --- Navigation breadcrumb --- */
+.breadcrumb{max-width:860px;margin:0 auto;padding:1rem 2rem 0;font-size:0.82rem;color:var(--text-sub)}
+.breadcrumb a{color:var(--blue);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+
+/* --- Main content --- */
+.content{max-width:860px;margin:0 auto;padding:1.5rem 2rem 4rem}
+
+/* --- Section --- */
+.section{margin-bottom:3rem}
+.section-num{font-family:var(--font-head);font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem}
+.section h2{font-family:var(--font-head);font-size:1.55rem;font-weight:700;line-height:1.35;margin-bottom:1rem;color:var(--text);letter-spacing:-0.01em}
+.section h3{font-family:var(--font-head);font-size:1.15rem;font-weight:600;margin:1.8rem 0 0.7rem;color:var(--text)}
+.section p{margin-bottom:1rem}
+
+/* --- Intro card --- */
+.intro-card{background:linear-gradient(135deg,var(--bg-dark) 0%,#282C35 100%);color:var(--text-inv);border-radius:var(--radius-xl);padding:2.2rem 2rem;margin-bottom:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;box-shadow:var(--shadow-lg)}
+.intro-card p{color:rgba(240,237,230,0.8);font-size:0.95rem;line-height:1.8;margin-bottom:0.5rem}
+.intro-card strong{color:#fff}
+.intro-icon{width:140px;height:140px;flex-shrink:0}
+@media(max-width:640px){.intro-card{grid-template-columns:1fr;text-align:center}.intro-icon{margin:0 auto;width:100px;height:100px}}
+
+/* --- Feature grid --- */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:1.5rem 0}
+.feat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.3rem 1.2rem;transition:box-shadow 0.2s,border-color 0.2s}
+.feat-card:hover{box-shadow:var(--shadow);border-color:var(--border-strong)}
+.feat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:0.7rem}
+.feat-card h4{font-family:var(--font-head);font-size:0.95rem;font-weight:600;margin-bottom:0.3rem}
+.feat-card p{font-size:0.82rem;color:var(--text-sub);line-height:1.65;margin:0}
+
+/* --- Callout boxes --- */
+.callout{border-radius:var(--radius);padding:1.1rem 1.3rem;margin:1.5rem 0;display:flex;gap:12px;align-items:flex-start;font-size:0.9rem;line-height:1.75}
+.callout svg{flex-shrink:0;margin-top:2px}
+.callout-tip{background:var(--green-light);border-left:3px solid var(--green)}
+.callout-warn{background:var(--yellow-light);border-left:3px solid var(--yellow)}
+.callout-info{background:var(--blue-light);border-left:3px solid var(--blue)}
+.callout-important{background:var(--accent-light);border-left:3px solid var(--accent)}
+.callout strong{font-weight:600}
+
+/* --- Comparison table --- */
+.compare{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.88rem}
+.compare th{background:var(--bg-dark);color:var(--text-inv);padding:10px 14px;text-align:left;font-weight:500;font-family:var(--font-head)}
+.compare th:first-child{border-radius:var(--radius) 0 0 0}
+.compare th:last-child{border-radius:0 var(--radius) 0 0}
+.compare td{padding:10px 14px;border-bottom:1px solid var(--border)}
+.compare tr:last-child td{border-bottom:none}
+.compare tr:nth-child(even){background:var(--bg)}
+.compare .check{color:var(--green);font-weight:700;text-align:center}
+.compare .cross{color:#CCC;text-align:center}
+
+/* --- Folder tree --- */
+.tree{background:var(--bg-code);border-radius:var(--radius);padding:1.3rem 1.5rem;margin:1.5rem 0;font-family:var(--font-mono);font-size:0.82rem;line-height:2;overflow-x:auto}
+.tree .folder{color:var(--blue);font-weight:500}
+.tree .file{color:var(--text-sub)}
+.tree .highlight{color:var(--accent);font-weight:500}
+.tree .comment{color:#999;font-style:italic}
+
+/* --- Link cards --- */
+.link-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:1.5rem 0}
+.link-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem;text-decoration:none;color:var(--text);transition:all 0.2s;display:flex;align-items:center;gap:12px}
+.link-card:hover{border-color:var(--blue);box-shadow:var(--shadow);transform:translateY(-1px)}
+.link-card .lc-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.link-card .lc-label{font-size:0.82rem;font-weight:600;font-family:var(--font-head)}
+.link-card .lc-desc{font-size:0.72rem;color:var(--text-sub);margin-top:1px}
+
+/* --- Badge pills --- */
+.pill{display:inline-block;font-size:0.7rem;font-weight:600;padding:2px 10px;border-radius:100px;letter-spacing:0.03em;vertical-align:middle}
+.pill-new{background:var(--accent-light);color:var(--accent-dark)}
+.pill-free{background:var(--green-light);color:var(--green)}
+
+/* --- Diagram container --- */
+.diagram-wrap{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin:1.8rem 0;text-align:center}
+.diagram-wrap svg{max-width:100%;height:auto}
+.diagram-caption{font-size:0.78rem;color:var(--text-sub);margin-top:0.8rem;text-align:center}
+
+/* --- Footer nav --- */
+.footer-nav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:2rem;margin-top:3rem}
+.footer-nav a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--blue);font-weight:500;font-size:0.92rem;font-family:var(--font-head);padding:8px 16px;border:1px solid var(--border);border-radius:var(--radius);transition:all 0.15s}
+.footer-nav a:hover{border-color:var(--blue);background:var(--blue-light)}
+
+/* --- Responsive --- */
+@media(max-width:640px){
+  .hero h1{font-size:1.7rem}
+  .content{padding:1rem 1.2rem 3rem}
+  .feat-grid{grid-template-columns:1fr}
+  .link-grid{grid-template-columns:1fr}
+}
+</style>
+<style>
+.step-flow{display:flex;flex-direction:column;gap:0;margin:1.5rem 0}
+.step{display:grid;grid-template-columns:48px 1fr;gap:0 16px;position:relative}
+.step::before{content:'';position:absolute;left:23px;top:48px;bottom:0;width:2px;background:var(--border)}
+.step:last-child::before{display:none}
+.step-num{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:1.1rem;flex-shrink:0}
+.step-body{padding:12px 0 28px}
+.step-body h4{font-family:var(--font-head);font-size:1rem;font-weight:600;margin-bottom:0.4rem}
+.step-body p{font-size:0.88rem;color:var(--text-sub);line-height:1.7;margin:0}
+.step-body code{background:var(--bg-code);padding:1px 6px;border-radius:4px;font-family:var(--font-mono);font-size:0.82rem}
+.param-table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:0.85rem}
+.param-table th{background:var(--bg-code);padding:8px 12px;text-align:left;font-weight:600;font-family:var(--font-head);border-bottom:2px solid var(--border)}
+.param-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.param-table td:first-child{font-family:var(--font-mono);font-weight:500;white-space:nowrap;color:var(--accent-dark)}
+.ability-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:1.2rem 0}
+.ability-tag{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:0.8rem;font-weight:500;text-align:center;transition:all 0.15s}
+.ability-tag:hover{border-color:var(--accent);background:var(--accent-light)}
+.ability-tag.highlight{border-color:var(--accent);background:var(--accent-light);color:var(--accent-dark);font-weight:600}
+.ability-tag .sub{display:block;font-size:0.68rem;color:var(--text-sub);font-weight:400;margin-top:2px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      Flare Engine 初心者マニュアル
+    </div>
+    <h1>第2章<br><span>インストールと初期設定</span></h1>
+    <p class="hero-sub">Unity6対応を含むセットアップ手順を5ステップで完全ガイド</p>
+  </div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">マニュアル TOP</a> &rsaquo; <a href="#">目次</a> &rsaquo; <strong>第2章 インストールと初期設定</strong>
+</nav>
+<main class="content">
+
+<section class="section" id="s2-1">
+  <div class="section-num">Section 2.1</div>
+  <h2>インストール全体の流れ</h2>
+  <p>Flare Engineのセットアップは5つのステップで完了します。以下の流れに沿って進めましょう。</p>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 680 110" xmlns="http://www.w3.org/2000/svg" font-family="Outfit,Noto Sans JP,sans-serif">
+      <rect x="0" y="20" width="120" height="64" rx="10" fill="#FFF0EB" stroke="#E85D3A" stroke-width="1.2"/>
+      <text x="60" y="46" text-anchor="middle" fill="#C24422" font-size="9" font-weight="600">STEP 1</text>
+      <text x="60" y="64" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">Import</text>
+      <text x="60" y="78" text-anchor="middle" fill="#6B6E76" font-size="8">Package Manager</text>
+
+      <path d="M124 52 L140 52" stroke="#CCC9C0" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <rect x="144" y="20" width="120" height="64" rx="10" fill="#EBF2FC" stroke="#3B7DD8" stroke-width="1.2"/>
+      <text x="204" y="46" text-anchor="middle" fill="#3B7DD8" font-size="9" font-weight="600">STEP 2</text>
+      <text x="204" y="64" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">依存パッケージ</text>
+      <text x="204" y="78" text-anchor="middle" fill="#6B6E76" font-size="8">Input System等</text>
+
+      <path d="M268 52 L284 52" stroke="#CCC9C0" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <rect x="288" y="20" width="120" height="64" rx="10" fill="#FFF8E6" stroke="#E5A820" stroke-width="1.2"/>
+      <text x="348" y="46" text-anchor="middle" fill="#E5A820" font-size="9" font-weight="600">STEP 3</text>
+      <text x="348" y="64" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">Input設定</text>
+      <text x="348" y="78" text-anchor="middle" fill="#6B6E76" font-size="8">Both に変更</text>
+
+      <path d="M412 52 L428 52" stroke="#CCC9C0" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <rect x="432" y="20" width="120" height="64" rx="10" fill="#F0ECFB" stroke="#7C5CDB" stroke-width="1.2"/>
+      <text x="492" y="46" text-anchor="middle" fill="#7C5CDB" font-size="9" font-weight="600">STEP 4</text>
+      <text x="492" y="64" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">Unity6修正</text>
+      <text x="492" y="78" text-anchor="middle" fill="#6B6E76" font-size="8">API名変更</text>
+
+      <path d="M556 52 L572 52" stroke="#CCC9C0" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <rect x="576" y="20" width="100" height="64" rx="10" fill="#E8F6EE" stroke="#2D9D5A" stroke-width="1.2"/>
+      <text x="626" y="46" text-anchor="middle" fill="#2D9D5A" font-size="9" font-weight="600">STEP 5</text>
+      <text x="626" y="64" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">動作確認</text>
+      <text x="626" y="78" text-anchor="middle" fill="#6B6E76" font-size="8">Demo再生</text>
+
+      <defs><marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6" fill="#CCC9C0"/></marker></defs>
+    </svg>
+    <div class="diagram-caption">Flare Engine セットアップの5ステップ</div>
+  </div>
+</section>
+
+<section class="section" id="s2-2">
+  <div class="section-num">Section 2.2</div>
+  <h2>Step 1 — Package Managerからインポート</h2>
+
+  <div class="step-flow">
+    <div class="step">
+      <div class="step-num" style="background:var(--accent-light);color:var(--accent-dark)">1</div>
+      <div class="step-body">
+        <h4>Unity Editorを開く</h4>
+        <p>新規プロジェクトまたは既存プロジェクトを開きます。テンプレートは<strong>2D (URP)</strong>を推奨します。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num" style="background:var(--blue-light);color:var(--blue)">2</div>
+      <div class="step-body">
+        <h4>Window → Package Manager を開く</h4>
+        <p>上部メニューから <code>Window</code> → <code>Package Manager</code> を選択します。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num" style="background:var(--green-light);color:var(--green)">3</div>
+      <div class="step-body">
+        <h4>My Assets から Flare Engine を検索</h4>
+        <p>左上のドロップダウンを <strong>My Assets</strong> に切り替え、「Flare」で検索。<strong>Import</strong>ボタンをクリックします。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num" style="background:var(--yellow-light);color:var(--yellow)">4</div>
+      <div class="step-body">
+        <h4>依存パッケージの確認ダイアログ</h4>
+        <p>依存パッケージのインストール確認が出たら <strong>Install/Upgrade</strong> をクリックして受け入れます。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num" style="background:var(--purple-light);color:var(--purple)">5</div>
+      <div class="step-body">
+        <h4>Settings Overrideの確認</h4>
+        <p>初回インストールの場合は Settings Override を<strong>受け入れ</strong>ます。既存プロジェクトへの追加時はスキップを検討してください（Sorting LayerやTagが上書きされます）。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-warn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <div><strong>バージョン更新時の注意：</strong>Flare Engineを更新する際は、Project Settingsフォルダのインポートをスキップすることを推奨します。Sorting LayerやTagsが既存の設定を上書きしてしまう可能性があります。</div>
+  </div>
+</section>
+
+<section class="section" id="s2-3">
+  <div class="section-num">Section 2.3</div>
+  <h2>Step 2 — 依存パッケージの確認</h2>
+  <p>Flare Engineが正常に動作するために必要なパッケージは以下の通りです。</p>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" font-family="Outfit,Noto Sans JP,sans-serif">
+      <!-- Center: Flare -->
+      <rect x="200" y="70" width="180" height="60" rx="12" fill="#1A1D23" stroke="#E85D3A" stroke-width="2"/>
+      <text x="290" y="96" text-anchor="middle" fill="#E85D3A" font-size="10" font-weight="600">CORE</text>
+      <text x="290" y="114" text-anchor="middle" fill="#F0EDE6" font-size="14" font-weight="700">Flare Engine</text>
+
+      <!-- New Input System -->
+      <rect x="0" y="0" width="155" height="50" rx="8" fill="#FFF0EB" stroke="#E85D3A" stroke-width="1"/>
+      <text x="78" y="22" text-anchor="middle" fill="#C24422" font-size="9" font-weight="600">必須</text>
+      <text x="78" y="38" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">New Input System</text>
+      <line x1="155" y1="25" x2="200" y2="85" stroke="#E85D3A" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+
+      <!-- Collections -->
+      <rect x="0" y="72" width="155" height="50" rx="8" fill="#EBF2FC" stroke="#3B7DD8" stroke-width="1"/>
+      <text x="78" y="94" text-anchor="middle" fill="#3B7DD8" font-size="9" font-weight="600">必須</text>
+      <text x="78" y="110" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">Collections</text>
+      <line x1="155" y1="97" x2="200" y2="100" stroke="#3B7DD8" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+
+      <!-- TextMesh Pro -->
+      <rect x="0" y="145" width="155" height="50" rx="8" fill="#F0ECFB" stroke="#7C5CDB" stroke-width="1"/>
+      <text x="78" y="167" text-anchor="middle" fill="#7C5CDB" font-size="9" font-weight="600">必須</text>
+      <text x="78" y="183" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">TextMesh Pro</text>
+      <line x1="155" y1="170" x2="200" y2="115" stroke="#7C5CDB" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+
+      <!-- Burst -->
+      <rect x="425" y="0" width="155" height="50" rx="8" fill="#FFF8E6" stroke="#E5A820" stroke-width="1"/>
+      <text x="503" y="22" text-anchor="middle" fill="#E5A820" font-size="9" font-weight="600">推奨</text>
+      <text x="503" y="38" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">Burst Compiler</text>
+      <line x1="425" y1="25" x2="380" y2="85" stroke="#E5A820" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+
+      <!-- URP -->
+      <rect x="425" y="72" width="155" height="50" rx="8" fill="#E8F6EE" stroke="#2D9D5A" stroke-width="1"/>
+      <text x="503" y="94" text-anchor="middle" fill="#2D9D5A" font-size="9" font-weight="600">推奨</text>
+      <text x="503" y="110" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">URP (2D)</text>
+      <line x1="425" y1="97" x2="380" y2="100" stroke="#2D9D5A" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+
+      <!-- Mathematics -->
+      <rect x="425" y="145" width="155" height="50" rx="8" fill="#E2E3E5" stroke="#888780" stroke-width="1"/>
+      <text x="503" y="167" text-anchor="middle" fill="#888780" font-size="9" font-weight="600">自動</text>
+      <text x="503" y="183" text-anchor="middle" fill="#2C2E33" font-size="11" font-weight="500">Mathematics</text>
+      <line x1="425" y1="170" x2="380" y2="115" stroke="#888780" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+    </svg>
+    <div class="diagram-caption">Flare Engineの依存パッケージ構成（左：必須 / 右：推奨・自動）</div>
+  </div>
+</section>
+
+<section class="section" id="s2-4">
+  <div class="section-num">Section 2.4</div>
+  <h2>Step 3 — Input設定の変更</h2>
+  <p>Flare Engineはデフォルトで旧Input Systemを使用しますが、New Input Systemもサポートしています。両方を有効にする必要があります。</p>
+
+  <div class="step-flow">
+    <div class="step">
+      <div class="step-num" style="background:var(--accent-light);color:var(--accent-dark)">1</div>
+      <div class="step-body">
+        <h4>Edit → Project Settings → Player を開く</h4>
+        <p>メニューバーから Project Settings を開き、左のリストから <strong>Player</strong> を選択します。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num" style="background:var(--blue-light);color:var(--blue)">2</div>
+      <div class="step-body">
+        <h4>Active Input Handling を「Both」に変更</h4>
+        <p><strong>Other Settings</strong> セクション内の <code>Active Input Handling</code> を <strong>Both</strong> に変更します。エディタの再起動を求められたら再起動してください。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg" font-family="Outfit,Noto Sans JP,sans-serif">
+      <!-- Before -->
+      <rect x="10" y="10" width="200" height="100" rx="10" fill="#F8D7DA" stroke="#E24B4A" stroke-width="1.2"/>
+      <text x="110" y="35" text-anchor="middle" fill="#721C24" font-size="10" font-weight="600">変更前</text>
+      <rect x="30" y="48" width="160" height="28" rx="6" fill="#fff" stroke="#CCC" stroke-width="1"/>
+      <text x="110" y="67" text-anchor="middle" fill="#721C24" font-size="11" font-weight="500">Input Manager (Old)</text>
+      <text x="110" y="98" text-anchor="middle" fill="#A32D2D" font-size="9">New Input System無効 → エラー</text>
+
+      <!-- Arrow -->
+      <path d="M220 60 L270 60" stroke="#2D9D5A" stroke-width="2" marker-end="url(#arr2)"/>
+      <defs><marker id="arr2" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><path d="M0 0 L10 3.5 L0 7" fill="#2D9D5A"/></marker></defs>
+
+      <!-- After -->
+      <rect x="280" y="10" width="210" height="100" rx="10" fill="#D4EDDA" stroke="#2D9D5A" stroke-width="1.2"/>
+      <text x="385" y="35" text-anchor="middle" fill="#155724" font-size="10" font-weight="600">変更後</text>
+      <rect x="300" y="48" width="170" height="28" rx="6" fill="#fff" stroke="#2D9D5A" stroke-width="1.5"/>
+      <text x="385" y="67" text-anchor="middle" fill="#155724" font-size="11" font-weight="700">Both</text>
+      <text x="385" y="98" text-anchor="middle" fill="#155724" font-size="9">両方のInput System対応 → 正常動作</text>
+    </svg>
+    <div class="diagram-caption">Project Settings → Player → Active Input Handling の設定変更</div>
+  </div>
+</section>
+
+<section class="section" id="s2-5">
+  <div class="section-num">Section 2.5</div>
+  <h2>Step 4 — Unity6対応：API名変更</h2>
+  <p>Unity6ではいくつかのAPIの名前が変更されています。Flare Engineのスクリプト内で以下の置換が必要です。</p>
+
+  <div class="callout callout-important">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <div><strong>Unity6を使わない場合（Unity 2022.3）：</strong>このステップはスキップできます。Unity 2022.3以前で使う場合はAPI変更は不要です。</div>
+  </div>
+
+  <p>Consoleウィンドウに表示されるエラーをクリックしてスクリプトを開き、以下の変更を行います。</p>
+
+  <table class="param-table">
+    <thead><tr><th>変更前（旧API名）</th><th>変更後（Unity6 API名）</th></tr></thead>
+    <tbody>
+      <tr><td>NativeMultiHashMap</td><td>NativeParallelMultiHashMap</td></tr>
+    </tbody>
+  </table>
+
+  <div class="step-flow">
+    <div class="step">
+      <div class="step-num" style="background:var(--accent-light);color:var(--accent-dark)">1</div>
+      <div class="step-body">
+        <h4>Consoleのエラーをクリック</h4>
+        <p>コンパイルエラーが表示されるので、エラーメッセージをダブルクリックしてスクリプトを開きます。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num" style="background:var(--blue-light);color:var(--blue)">2</div>
+      <div class="step-body">
+        <h4>API名を置換</h4>
+        <p>エディタの検索・置換機能（Ctrl+H）で <code>NativeMultiHashMap</code> を <code>NativeParallelMultiHashMap</code> に一括置換します。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num" style="background:var(--green-light);color:var(--green)">3</div>
+      <div class="step-body">
+        <h4>保存して再コンパイル</h4>
+        <p>変更を保存し、Unityに戻ります。再コンパイルが走らない場合は <code>Ctrl + R</code> を押してください。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D9D5A" stroke-width="2" stroke-linecap="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg>
+    <div><strong>最新バージョンでは修正済みの場合も：</strong>Flare Engineの最新バージョン（v1.8.5以降）ではUnity6互換性の問題が修正されている可能性があります。まずはそのままインポートして、エラーが出た場合のみこの手順を実行してください。</div>
+  </div>
+</section>
+
+<section class="section" id="s2-6">
+  <div class="section-num">Section 2.6</div>
+  <h2>Step 5 — デモシーンで動作確認</h2>
+  <p>すべての設定が完了したら、デモシーンを開いて正常に動作するか確認しましょう。</p>
+
+  <div class="step-flow">
+    <div class="step">
+      <div class="step-num" style="background:var(--accent-light);color:var(--accent-dark)">1</div>
+      <div class="step-body">
+        <h4>Project ウィンドウで Demo フォルダを開く</h4>
+        <p><code>Assets/TwoBitMachines/FlareEngine/Demo</code> に移動します。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num" style="background:var(--blue-light);color:var(--blue)">2</div>
+      <div class="step-body">
+        <h4>デモシーンをダブルクリック</h4>
+        <p>シーンファイルを開き、<strong>Play ボタン</strong>を押して実行します。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num" style="background:var(--green-light);color:var(--green)">3</div>
+      <div class="step-body">
+        <h4>キャラクターを操作してみる</h4>
+        <p>矢印キーで移動、スペースでジャンプ。キャラクターが正常に動けばセットアップ完了です。Tidbitシーンも試してみましょう。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <div><strong>Tidbitシーンとは：</strong>各機能を個別にデモする小さなシーン集です。「AIのパスファインディング」「ロープスイング」「インベントリ」など、機能単位で動作を確認できます。特定の機能を学びたいときに非常に便利です。</div>
+  </div>
+</section>
+
+<section class="section" id="s2-summary">
+  <h2>この章のまとめ</h2>
+  <div class="callout callout-info" style="flex-direction:column;gap:8px">
+    <div style="display:flex;gap:8px;align-items:flex-start">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <div><strong>第2章チェックリスト</strong></div>
+    </div>
+    <ul style="margin-left:32px;font-size:0.9rem;line-height:2.2">
+      <li>□ Package ManagerからFlare Engineをインポートした</li>
+      <li>□ 依存パッケージ（New Input System, Collections, TMP）が入っている</li>
+      <li>□ Active Input Handling を <strong>Both</strong> に変更した</li>
+      <li>□ Unity6の場合：API名の置換を行った</li>
+      <li>□ デモシーンが正常に動作することを確認した</li>
+      <li>□ Tidbitシーンもいくつか確認した</li>
+    </ul>
+  </div>
+</section>
+
+<nav class="footer-nav">
+  <a href="FlareEngine_Chapter02.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    前の章：Flare Engineとは
+  </a>
+  <a href="FlareEngine_Chapter03.html">
+    次の章：World Manager
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+  </a>
+</nav>
+</main>
+</body>
+</html>

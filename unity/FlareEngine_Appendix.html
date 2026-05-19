@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第99章 リファレンス・トラブルシューティング｜Flare Engine 初心者マニュアル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAFAF8;--bg-card:#FFFFFF;--bg-dark:#1A1D23;--bg-code:#F4F2ED;
+  --text:#2C2E33;--text-sub:#6B6E76;--text-inv:#F0EDE6;
+  --accent:#E85D3A;--accent-light:#FFF0EB;--accent-dark:#C24422;
+  --blue:#3B7DD8;--blue-light:#EBF2FC;
+  --green:#2D9D5A;--green-light:#E8F6EE;
+  --purple:#7C5CDB;--purple-light:#F0ECFB;
+  --yellow:#E5A820;--yellow-light:#FFF8E6;
+  --border:#E5E3DD;--border-strong:#CCC9C0;
+  --radius:10px;--radius-lg:16px;--radius-xl:24px;
+  --shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.04);
+  --shadow-lg:0 2px 8px rgba(0,0,0,0.06),0 8px 32px rgba(0,0,0,0.08);
+  --font-body:'Noto Sans JP','Outfit',sans-serif;
+  --font-head:'Outfit','Noto Sans JP',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.85;-webkit-font-smoothing:antialiased}
+
+/* --- Header hero --- */
+.hero{background:var(--bg-dark);color:var(--text-inv);padding:3.5rem 2rem 3rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(232,93,58,0.15) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-40%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(59,125,216,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:820px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,93,58,0.15);border:1px solid rgba(232,93,58,0.3);color:var(--accent);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;font-family:var(--font-head)}
+.hero h1{font-family:var(--font-head);font-size:2.4rem;font-weight:800;line-height:1.25;letter-spacing:-0.02em;margin-bottom:0.6rem}
+.hero h1 span{color:var(--accent)}
+.hero-sub{font-size:1.05rem;color:rgba(240,237,230,0.7);font-weight:300;line-height:1.7;max-width:600px}
+
+/* --- Navigation breadcrumb --- */
+.breadcrumb{max-width:860px;margin:0 auto;padding:1rem 2rem 0;font-size:0.82rem;color:var(--text-sub)}
+.breadcrumb a{color:var(--blue);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+
+/* --- Main content --- */
+.content{max-width:860px;margin:0 auto;padding:1.5rem 2rem 4rem}
+
+/* --- Section --- */
+.section{margin-bottom:3rem}
+.section-num{font-family:var(--font-head);font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem}
+.section h2{font-family:var(--font-head);font-size:1.55rem;font-weight:700;line-height:1.35;margin-bottom:1rem;color:var(--text);letter-spacing:-0.01em}
+.section h3{font-family:var(--font-head);font-size:1.15rem;font-weight:600;margin:1.8rem 0 0.7rem;color:var(--text)}
+.section p{margin-bottom:1rem}
+
+/* --- Intro card --- */
+.intro-card{background:linear-gradient(135deg,var(--bg-dark) 0%,#282C35 100%);color:var(--text-inv);border-radius:var(--radius-xl);padding:2.2rem 2rem;margin-bottom:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;box-shadow:var(--shadow-lg)}
+.intro-card p{color:rgba(240,237,230,0.8);font-size:0.95rem;line-height:1.8;margin-bottom:0.5rem}
+.intro-card strong{color:#fff}
+.intro-icon{width:140px;height:140px;flex-shrink:0}
+@media(max-width:640px){.intro-card{grid-template-columns:1fr;text-align:center}.intro-icon{margin:0 auto;width:100px;height:100px}}
+
+/* --- Feature grid --- */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:1.5rem 0}
+.feat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.3rem 1.2rem;transition:box-shadow 0.2s,border-color 0.2s}
+.feat-card:hover{box-shadow:var(--shadow);border-color:var(--border-strong)}
+.feat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:0.7rem}
+.feat-card h4{font-family:var(--font-head);font-size:0.95rem;font-weight:600;margin-bottom:0.3rem}
+.feat-card p{font-size:0.82rem;color:var(--text-sub);line-height:1.65;margin:0}
+
+/* --- Callout boxes --- */
+.callout{border-radius:var(--radius);padding:1.1rem 1.3rem;margin:1.5rem 0;display:flex;gap:12px;align-items:flex-start;font-size:0.9rem;line-height:1.75}
+.callout svg{flex-shrink:0;margin-top:2px}
+.callout-tip{background:var(--green-light);border-left:3px solid var(--green)}
+.callout-warn{background:var(--yellow-light);border-left:3px solid var(--yellow)}
+.callout-info{background:var(--blue-light);border-left:3px solid var(--blue)}
+.callout-important{background:var(--accent-light);border-left:3px solid var(--accent)}
+.callout strong{font-weight:600}
+
+/* --- Comparison table --- */
+.compare{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.88rem}
+.compare th{background:var(--bg-dark);color:var(--text-inv);padding:10px 14px;text-align:left;font-weight:500;font-family:var(--font-head)}
+.compare th:first-child{border-radius:var(--radius) 0 0 0}
+.compare th:last-child{border-radius:0 var(--radius) 0 0}
+.compare td{padding:10px 14px;border-bottom:1px solid var(--border)}
+.compare tr:last-child td{border-bottom:none}
+.compare tr:nth-child(even){background:var(--bg)}
+.compare .check{color:var(--green);font-weight:700;text-align:center}
+.compare .cross{color:#CCC;text-align:center}
+
+/* --- Folder tree --- */
+.tree{background:var(--bg-code);border-radius:var(--radius);padding:1.3rem 1.5rem;margin:1.5rem 0;font-family:var(--font-mono);font-size:0.82rem;line-height:2;overflow-x:auto}
+.tree .folder{color:var(--blue);font-weight:500}
+.tree .file{color:var(--text-sub)}
+.tree .highlight{color:var(--accent);font-weight:500}
+.tree .comment{color:#999;font-style:italic}
+
+/* --- Link cards --- */
+.link-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:1.5rem 0}
+.link-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem;text-decoration:none;color:var(--text);transition:all 0.2s;display:flex;align-items:center;gap:12px}
+.link-card:hover{border-color:var(--blue);box-shadow:var(--shadow);transform:translateY(-1px)}
+.link-card .lc-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.link-card .lc-label{font-size:0.82rem;font-weight:600;font-family:var(--font-head)}
+.link-card .lc-desc{font-size:0.72rem;color:var(--text-sub);margin-top:1px}
+
+/* --- Badge pills --- */
+.pill{display:inline-block;font-size:0.7rem;font-weight:600;padding:2px 10px;border-radius:100px;letter-spacing:0.03em;vertical-align:middle}
+.pill-new{background:var(--accent-light);color:var(--accent-dark)}
+.pill-free{background:var(--green-light);color:var(--green)}
+
+/* --- Diagram container --- */
+.diagram-wrap{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin:1.8rem 0;text-align:center}
+.diagram-wrap svg{max-width:100%;height:auto}
+.diagram-caption{font-size:0.78rem;color:var(--text-sub);margin-top:0.8rem;text-align:center}
+
+/* --- Footer nav --- */
+.footer-nav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:2rem;margin-top:3rem}
+.footer-nav a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--blue);font-weight:500;font-size:0.92rem;font-family:var(--font-head);padding:8px 16px;border:1px solid var(--border);border-radius:var(--radius);transition:all 0.15s}
+.footer-nav a:hover{border-color:var(--blue);background:var(--blue-light)}
+
+/* --- Responsive --- */
+@media(max-width:640px){
+  .hero h1{font-size:1.7rem}
+  .content{padding:1rem 1.2rem 3rem}
+  .feat-grid{grid-template-columns:1fr}
+  .link-grid{grid-template-columns:1fr}
+}
+</style>
+<style>
+.step-flow{display:flex;flex-direction:column;gap:0;margin:1.5rem 0}
+.step{display:grid;grid-template-columns:48px 1fr;gap:0 16px;position:relative}
+.step::before{content:'';position:absolute;left:23px;top:48px;bottom:0;width:2px;background:var(--border)}
+.step:last-child::before{display:none}
+.step-num{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:1.1rem;flex-shrink:0}
+.step-body{padding:12px 0 28px}
+.step-body h4{font-family:var(--font-head);font-size:1rem;font-weight:600;margin-bottom:0.4rem}
+.step-body p{font-size:0.88rem;color:var(--text-sub);line-height:1.7;margin:0}
+.step-body code{background:var(--bg-code);padding:1px 6px;border-radius:4px;font-family:var(--font-mono);font-size:0.82rem}
+.param-table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:0.85rem}
+.param-table th{background:var(--bg-code);padding:8px 12px;text-align:left;font-weight:600;font-family:var(--font-head);border-bottom:2px solid var(--border)}
+.param-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.param-table td:first-child{font-family:var(--font-mono);font-weight:500;white-space:nowrap;color:var(--accent-dark)}
+.ability-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:1.2rem 0}
+.ability-tag{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:0.8rem;font-weight:500;text-align:center;transition:all 0.15s}
+.ability-tag:hover{border-color:var(--accent);background:var(--accent-light)}
+.ability-tag.highlight{border-color:var(--accent);background:var(--accent-light);color:var(--accent-dark);font-weight:600}
+.ability-tag .sub{display:block;font-size:0.68rem;color:var(--text-sub);font-weight:400;margin-top:2px}
+.code-block{background:#1A1D23;color:#E0DDD5;border-radius:var(--radius);padding:1.2rem 1.4rem;margin:1rem 0;overflow-x:auto;font-family:var(--font-mono);font-size:0.8rem;line-height:1.8}
+.ref-section{margin-bottom:2.5rem}
+.ref-section h3{font-family:var(--font-head);font-size:1.1rem;font-weight:600;margin-bottom:0.8rem;padding-bottom:0.4rem;border-bottom:2px solid var(--accent)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      Flare Engine 初心者マニュアル
+    </div>
+    <h1>付録<br><span>リファレンス・トラブルシューティング</span></h1>
+    <p class="hero-sub">パラメータ一覧、エラー対処、Unity6移行チェックリスト、公式リンク集</p>
+  </div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">マニュアル TOP</a> &rsaquo; <a href="#">目次</a> &rsaquo; <strong>付録 リファレンス・トラブルシューティング</strong>
+</nav>
+<main class="content">
+
+<section class="section ref-section" id="appendix-a">
+  <div class="section-num">Appendix A</div>
+  <h3>全Player Abilityパラメータ一覧</h3>
+  <table class="param-table">
+    <thead><tr><th>アビリティ</th><th>主要パラメータ</th><th>ランナー重要度</th></tr></thead>
+    <tbody>
+      <tr><td>Walk</td><td>Speed, Acceleration, Deceleration</td><td style="color:var(--accent);font-weight:600">★★★</td></tr>
+      <tr><td>Jump</td><td>Jump Height, Jump Time, Air Jumps, Coyote Time</td><td style="color:var(--accent);font-weight:600">★★★</td></tr>
+      <tr><td>Infinite Walk</td><td>Speed, Direction</td><td style="color:var(--accent);font-weight:600">★★★</td></tr>
+      <tr><td>Wall Climb/Slide</td><td>Slide Speed, Hold Time, Wall Jump Force</td><td style="color:var(--accent);font-weight:600">★★★</td></tr>
+      <tr><td>Dash</td><td>Dash Speed, Duration, Cooldown, Direction</td><td style="color:var(--accent);font-weight:600">★★★</td></tr>
+      <tr><td>Slope Slide</td><td>Slide Speed, Min Angle</td><td style="color:var(--blue);font-weight:500">★★☆</td></tr>
+      <tr><td>Crouch / Crouch Slide</td><td>Height Reduction, Slide Speed</td><td style="color:var(--blue);font-weight:500">★★☆</td></tr>
+      <tr><td>Glide / Hover</td><td>Fall Speed, Duration</td><td style="color:var(--blue);font-weight:500">★★☆</td></tr>
+      <tr><td>Push Back</td><td>Force, Duration</td><td style="color:var(--blue);font-weight:500">★★☆</td></tr>
+      <tr><td>Jump On Enemy</td><td>Bounce Force</td><td style="color:var(--blue);font-weight:500">★★☆</td></tr>
+      <tr><td>Swim / Float</td><td>Swim Speed, Buoyancy</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Ladder Climb</td><td>Climb Speed</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Rope Swing</td><td>Swing Force, Release Force</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Ziplining</td><td>Zip Speed</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Cannon</td><td>Launch Force, Angle</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Hide</td><td>Trigger Area</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Static Flying</td><td>Speed, Hover Height</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Push Block</td><td>Push Speed</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Pick And Throw</td><td>Throw Force, Arc</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Melee</td><td>Damage, Range, Combo Count</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Firearms</td><td>Fire Rate, Recoil, Ammo</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Slam On Enemy</td><td>Slam Force, Damage</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Passenger</td><td>Mount/Dismount triggers</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+      <tr><td>Vehicle</td><td>Speed, Control Type</td><td style="color:var(--text-sub)">★☆☆</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section ref-section" id="appendix-b">
+  <div class="section-num">Appendix B</div>
+  <h3>AI Behavior Treeノード分類</h3>
+  <table class="param-table">
+    <thead><tr><th>カテゴリ</th><th>主要ノード</th><th>説明</th></tr></thead>
+    <tbody>
+      <tr><td>Composite</td><td>Selector, Sequence, Parallel</td><td>子ノードの実行順序と成否の判定方法</td></tr>
+      <tr><td>Decorator</td><td>Inverter, Repeater, Cooldown</td><td>子ノードの結果を修飾する</td></tr>
+      <tr><td>Action</td><td>Move, Jump, Attack, Wait, Patrol</td><td>実際のAI行動を実行する</td></tr>
+      <tr><td>Condition</td><td>CanSeeTarget, IsOnGround, HealthCheck</td><td>条件判定を行い成否を返す</td></tr>
+    </tbody>
+  </table>
+  <div class="callout callout-info">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <div>Behavior Treeは50以上のノードを搭載しており、<strong>リアルタイムデバッグ</strong>に対応しています。実行中のノードがエディタ上でハイライトされるため、AIの動作を視覚的に確認できます。</div>
+  </div>
+</section>
+
+<section class="section ref-section" id="appendix-c">
+  <div class="section-num">Appendix C</div>
+  <h3>よくあるエラーと対処法</h3>
+  <table class="param-table">
+    <thead><tr><th>エラー / 症状</th><th>原因</th><th>対処法</th></tr></thead>
+    <tbody>
+      <tr><td>NativeMultiHashMap エラー</td><td>Unity6のAPI名変更</td><td>NativeParallelMultiHashMap に置換</td></tr>
+      <tr><td>キャラクターが動かない</td><td>World Managerが未配置</td><td>シーンにWorld Managerを追加</td></tr>
+      <tr><td>足場をすり抜ける</td><td>Layerが未設定</td><td>地面=World、足場=Platform に設定</td></tr>
+      <tr><td>Input反応なし</td><td>Active Input Handling設定</td><td>Project Settings → Both に変更</td></tr>
+      <tr><td>壁を登れない</td><td>NoClimbタグ付き / Climb未有効</td><td>タグ確認 + Player設定のClimb Slopes確認</td></tr>
+      <tr><td>Moving Platformに乗れない</td><td>Player設定ミス</td><td>Use Moving Platforms = ON を確認</td></tr>
+      <tr><td>セーブが効かない</td><td>Game Name未設定</td><td>World ManagerのGame Nameを設定</td></tr>
+      <tr><td>アニメーションが再生されない</td><td>Sprite Engine未設定</td><td>スプライトと状態遷移条件を確認</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section ref-section" id="appendix-d">
+  <div class="section-num">Appendix D</div>
+  <h3>Unity6移行チェックリスト</h3>
+  <div class="callout callout-important" style="flex-direction:column;gap:8px">
+    <div style="display:flex;gap:8px;align-items:flex-start">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div><strong>Unity 2022.3 → Unity 6 移行チェックリスト</strong></div>
+    </div>
+    <ul style="margin-left:32px;font-size:0.9rem;line-height:2.2">
+      <li>□ プロジェクトの<strong>完全バックアップ</strong>を取った</li>
+      <li>□ Unity Hubから Unity 6 LTS をインストールした</li>
+      <li>□ Unity Hubでプロジェクトのバージョンを切り替えた</li>
+      <li>□ APIアップデートの自動提案を受け入れた</li>
+      <li>□ <code>NativeMultiHashMap</code> → <code>NativeParallelMultiHashMap</code> を手動置換した</li>
+      <li>□ Active Input Handling が <strong>Both</strong> であることを再確認した</li>
+      <li>□ デモシーンが正常に動作することを確認した</li>
+      <li>□ 自作シーンのLayer / Tag / Collider設定を確認した</li>
+      <li>□ ビルドしてモバイル実機で動作確認した</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section ref-section" id="appendix-e">
+  <div class="section-num">Appendix E</div>
+  <h3>公式リソースリンク集</h3>
+  <div class="link-grid">
+    <a class="link-card" href="https://twobitmachines.github.io/FlareEngineDocs/" target="_blank" rel="noopener">
+      <div class="lc-icon" style="background:var(--blue-light)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      </div>
+      <div>
+        <div class="lc-label">公式ドキュメント（Flare Engine）</div>
+        <div class="lc-desc">twobitmachines.github.io/FlareEngineDocs</div>
+      </div>
+    </a>
+    <a class="link-card" href="https://assetstore.unity.com/packages/templates/systems/flare-engine-2d-tools-228468" target="_blank" rel="noopener">
+      <div class="lc-icon" style="background:var(--purple-light)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+      </div>
+      <div>
+        <div class="lc-label">Unity Asset Store ページ</div>
+        <div class="lc-desc">購入・レビュー・更新履歴</div>
+      </div>
+    </a>
+    <a class="link-card" href="https://discord.gg/flareengine" target="_blank" rel="noopener">
+      <div class="lc-icon" style="background:var(--accent-light)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div>
+        <div class="lc-label">Discord コミュニティ</div>
+        <div class="lc-desc">開発者サポート・ユーザー交流</div>
+      </div>
+    </a>
+    <a class="link-card" href="mailto:TwoBitMachinesDev@gmail.com">
+      <div class="lc-icon" style="background:var(--green-light)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div>
+        <div class="lc-label">開発者メール</div>
+        <div class="lc-desc">TwoBitMachinesDev@gmail.com</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<nav class="footer-nav">
+  <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>前の章：実践ガイド</a>
+  <a href="#">マニュアル TOPへ<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></a>
+</nav>
+</main>
+</body>
+</html>

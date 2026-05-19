@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flare Engine 2D Tools 初心者マニュアル｜目次</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2077000524682922"
+     crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAFAF8;--bg-card:#FFFFFF;--bg-dark:#1A1D23;--bg-code:#F4F2ED;
+  --text:#2C2E33;--text-sub:#6B6E76;--text-inv:#F0EDE6;
+  --accent:#E85D3A;--accent-light:#FFF0EB;--accent-dark:#C24422;
+  --blue:#3B7DD8;--blue-light:#EBF2FC;
+  --green:#2D9D5A;--green-light:#E8F6EE;
+  --purple:#7C5CDB;--purple-light:#F0ECFB;
+  --yellow:#E5A820;--yellow-light:#FFF8E6;
+  --border:#E5E3DD;--border-strong:#CCC9C0;
+  --radius:10px;--radius-lg:16px;--radius-xl:24px;
+  --shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.04);
+  --shadow-lg:0 2px 8px rgba(0,0,0,0.06),0 8px 32px rgba(0,0,0,0.08);
+  --font-body:'Noto Sans JP','Outfit',sans-serif;
+  --font-head:'Outfit','Noto Sans JP',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.85;-webkit-font-smoothing:antialiased}
+
+/* Hero */
+.hero{background:var(--bg-dark);color:var(--text-inv);padding:3.5rem 2rem 3rem;position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;top:-50%;right:-15%;width:700px;height:700px;background:radial-gradient(circle,rgba(232,93,58,0.18) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-50%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(59,125,216,0.12) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:1}
+.hero-logo{display:inline-block;margin-bottom:1.5rem}
+.hero h1{font-family:var(--font-head);font-size:2.6rem;font-weight:800;line-height:1.2;letter-spacing:-0.03em;margin-bottom:0.5rem}
+.hero h1 span{color:var(--accent)}
+.hero-sub{font-size:1.05rem;color:rgba(240,237,230,0.65);font-weight:300;line-height:1.8;max-width:540px;margin:0 auto}
+.hero-meta{display:flex;justify-content:center;gap:24px;margin-top:1.5rem;font-size:0.78rem;color:rgba(240,237,230,0.45)}
+.hero-meta span{display:flex;align-items:center;gap:5px}
+
+/* Content */
+.content{max-width:860px;margin:0 auto;padding:2rem 2rem 4rem}
+
+/* Section label */
+.part-label{font-family:var(--font-head);font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-top:2.5rem;margin-bottom:0.8rem;padding-left:2px}
+.part-label:first-child{margin-top:0}
+
+/* Chapter card */
+.ch-list{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem}
+.ch-card{display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.3rem;text-decoration:none;color:var(--text);transition:all 0.2s}
+.ch-card:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-2px)}
+.ch-card:active{transform:translateY(0)}
+
+.ch-num{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:1.15rem;flex-shrink:0}
+.ch-body h3{font-family:var(--font-head);font-size:1rem;font-weight:600;margin-bottom:2px;line-height:1.35}
+.ch-body p{font-size:0.8rem;color:var(--text-sub);line-height:1.55;margin:0}
+.ch-arrow{color:var(--border-strong);transition:color 0.2s,transform 0.2s}
+.ch-card:hover .ch-arrow{color:var(--accent);transform:translateX(3px)}
+
+/* Badge */
+.ch-badge{display:inline-block;font-size:0.62rem;font-weight:600;padding:2px 8px;border-radius:100px;letter-spacing:0.03em;margin-left:6px;vertical-align:middle}
+.b-core{background:var(--blue-light);color:var(--blue)}
+.b-runner{background:var(--accent-light);color:var(--accent-dark)}
+.b-adv{background:var(--yellow-light);color:var(--yellow)}
+.b-ref{background:#E2E3E5;color:#5F5E5A}
+
+/* Stats bar */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:2rem 0 2.5rem}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;text-align:center}
+.stat-card .num{font-family:var(--font-head);font-size:1.8rem;font-weight:800;line-height:1;margin-bottom:4px}
+.stat-card .label{font-size:0.72rem;color:var(--text-sub);font-weight:500}
+
+/* Legend */
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;font-size:0.78rem}
+.legend-item{display:flex;align-items:center;gap:5px}
+
+/* Quick start */
+.quick-start{background:linear-gradient(135deg,var(--bg-dark) 0%,#282C35 100%);color:var(--text-inv);border-radius:var(--radius-xl);padding:2rem;margin:2.5rem 0}
+.quick-start h2{font-family:var(--font-head);font-size:1.3rem;font-weight:700;margin-bottom:1rem;color:#fff}
+.qs-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.qs-step{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:1rem}
+.qs-step .qs-num{font-family:var(--font-head);font-weight:800;font-size:1.4rem;color:var(--accent);line-height:1}
+.qs-step h4{font-size:0.88rem;font-weight:600;margin:6px 0 4px;color:#fff}
+.qs-step p{font-size:0.76rem;color:rgba(240,237,230,0.6);line-height:1.6;margin:0}
+
+/* Footer */
+.footer{text-align:center;padding:2rem;border-top:1px solid var(--border);margin-top:2rem;font-size:0.78rem;color:var(--text-sub)}
+.footer a{color:var(--blue);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+
+@media(max-width:640px){
+  .hero h1{font-size:1.8rem}
+  .content{padding:1.2rem 1.2rem 3rem}
+  .ch-card{grid-template-columns:48px 1fr 20px;gap:10px;padding:0.8rem 1rem}
+  .ch-num{width:44px;height:44px;font-size:1rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .qs-steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="14" width="72" height="52" rx="10" fill="#282C35" stroke="#E85D3A" stroke-width="2"/>
+        <rect x="12" y="22" width="56" height="36" rx="4" fill="#1A1D23"/>
+        <!-- pixel character -->
+        <rect x="30" y="30" width="5" height="5" fill="#E85D3A"/><rect x="35" y="30" width="5" height="5" fill="#E85D3A"/>
+        <rect x="25" y="35" width="5" height="5" fill="#E85D3A"/><rect x="30" y="35" width="5" height="5" fill="#FFF0EB"/><rect x="35" y="35" width="5" height="5" fill="#FFF0EB"/><rect x="40" y="35" width="5" height="5" fill="#E85D3A"/>
+        <rect x="30" y="40" width="5" height="5" fill="#3B7DD8"/><rect x="35" y="40" width="5" height="5" fill="#3B7DD8"/>
+        <rect x="25" y="45" width="5" height="5" fill="#3B7DD8"/><rect x="40" y="45" width="5" height="5" fill="#3B7DD8"/>
+        <rect x="25" y="50" width="5" height="5" fill="#E5A820"/><rect x="40" y="50" width="5" height="5" fill="#E5A820"/>
+        <!-- platforms -->
+        <rect x="50" y="38" width="16" height="3" rx="1" fill="#7C5CDB" opacity="0.7"/>
+        <circle cx="58" cy="32" r="2.5" fill="#E5A820" opacity="0.8"/>
+        <rect x="12" y="54" width="56" height="4" rx="1" fill="#2D9D5A" opacity="0.5"/>
+      </svg>
+    </div>
+    <h1><span>Flare Engine</span> 2D Tools<br>初心者マニュアル</h1>
+    <p class="hero-sub">Unity向け2Dプラットフォーマー制作ツールの使い方を<br>ゼロからわかりやすく解説する完全ガイドです。</p>
+    <div class="hero-meta">
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        全11章 + 付録
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        読了目安 45分
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        初心者向け
+      </span>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="num" style="color:var(--accent)">11</div>
+      <div class="label">章</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" style="color:var(--blue)">30+</div>
+      <div class="label">図解・ダイアグラム</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" style="color:var(--green)">24</div>
+      <div class="label">アビリティ解説</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" style="color:var(--purple)">50+</div>
+      <div class="label">チェックリスト項目</div>
+    </div>
+  </div>
+
+  <!-- Quick Start -->
+  <div class="quick-start">
+    <h2>クイックスタート ― 最短で動かしたい人へ</h2>
+    <div class="qs-steps">
+      <div class="qs-step">
+        <div class="qs-num">1</div>
+        <h4>インストール</h4>
+        <p>Package Managerからインポート。5分で完了</p>
+        <p style="margin-top:6px"><a href="FlareEngine_Chapter02.html" style="color:var(--accent);font-size:0.76rem;text-decoration:none">→ 第2章へ</a></p>
+      </div>
+      <div class="qs-step">
+        <div class="qs-num">2</div>
+        <h4>Player作成</h4>
+        <p>BoxCollider2D + Playerコンポーネントを追加</p>
+        <p style="margin-top:6px"><a href="FlareEngine_Chapter04.html" style="color:var(--accent);font-size:0.76rem;text-decoration:none">→ 第4章へ</a></p>
+      </div>
+      <div class="qs-step">
+        <div class="qs-num">3</div>
+        <h4>アニメーション</h4>
+        <p>Sprite Engineでノーコード設定</p>
+        <p style="margin-top:6px"><a href="FlareEngine_Chapter05.html" style="color:var(--accent);font-size:0.76rem;text-decoration:none">→ 第5章へ</a></p>
+      </div>
+      <div class="qs-step">
+        <div class="qs-num">4</div>
+        <h4>ステージ構築</h4>
+        <p>Interactablesでギミックを配置</p>
+        <p style="margin-top:6px"><a href="FlareEngine_Chapter06.html" style="color:var(--accent);font-size:0.76rem;text-decoration:none">→ 第6章へ</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><span class="ch-badge b-core">基礎</span> 全員必読</div>
+    <div class="legend-item"><span class="ch-badge b-runner">ランナー活用</span> アイスクライムに直結</div>
+    <div class="legend-item"><span class="ch-badge b-adv">応用</span> 余裕があれば</div>
+    <div class="legend-item"><span class="ch-badge b-ref">リファレンス</span> 必要時に参照</div>
+  </div>
+
+  <!-- PART 1: Foundation -->
+  <div class="part-label">Part 1 — 基礎を固める</div>
+  <div class="ch-list">
+    <a class="ch-card" href="FlareEngine_Chapter1.html">
+      <div class="ch-num" style="background:var(--blue-light);color:var(--blue)">1</div>
+      <div class="ch-body">
+        <h3>Flare Engineとは <span class="ch-badge b-core">基礎</span></h3>
+        <p>概要・主要機能・できること/できないこと・フォルダ構成・全体アーキテクチャ図</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a class="ch-card" href="FlareEngine_Chapter02.html">
+      <div class="ch-num" style="background:var(--blue-light);color:var(--blue)">2</div>
+      <div class="ch-body">
+        <h3>インストールと初期設定 <span class="ch-badge b-core">基礎</span></h3>
+        <p>5ステップセットアップ・依存パッケージ・Input設定・Unity6対応・デモ動作確認</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a class="ch-card" href="FlareEngine_Chapter03.html">
+      <div class="ch-num" style="background:var(--blue-light);color:var(--blue)">3</div>
+      <div class="ch-body">
+        <h3>World Manager ― 世界の土台 <span class="ch-badge b-core">基礎</span></h3>
+        <p>自動設定されるLayer/Tag・World Events・ポーズ/セーブ/リセット制御</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <!-- PART 2: Core Mechanics -->
+  <div class="part-label">Part 2 — コアメカニクスを構築する</div>
+  <div class="ch-list">
+    <a class="ch-card" href="FlareEngine_Chapter04.html">
+      <div class="ch-num" style="background:var(--accent-light);color:var(--accent-dark)">4</div>
+      <div class="ch-body">
+        <h3>Player Controller <span class="ch-badge b-runner">ランナー活用</span></h3>
+        <p>コンポーネント構成・30+アビリティ・Gravity調整・Priority設定・ランナー向け推奨値</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a class="ch-card" href="FlareEngine_Chapter05.html">
+      <div class="ch-num" style="background:var(--accent-light);color:var(--accent-dark)">5</div>
+      <div class="ch-body">
+        <h3>Sprite Engine <span class="ch-badge b-runner">ランナー活用</span></h3>
+        <p>ノーコードアニメーション管理・状態遷移のビジュアル構築・Signals連携</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a class="ch-card" href="FlareEngine_Chapter06.html">
+      <div class="ch-num" style="background:var(--accent-light);color:var(--accent-dark)">6</div>
+      <div class="ch-body">
+        <h3>Interactables ― ステージギミック <span class="ch-badge b-runner">ランナー活用</span></h3>
+        <p>動く足場・橋・ジップライン・水・はしご・ロープ・テレポート・ギミック組み合わせ例</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <!-- PART 3: Expand -->
+  <div class="part-label">Part 3 — ゲームを広げる</div>
+  <div class="ch-list">
+    <a class="ch-card" href="FlareEngine_Chapter07.html">
+      <div class="ch-num" style="background:var(--yellow-light);color:var(--yellow)">7</div>
+      <div class="ch-body">
+        <h3>AIシステム <span class="ch-badge b-adv">応用</span></h3>
+        <p>FSM vs Behavior Tree・AIキャラクター作成・Pathfinding・50+ノード</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a class="ch-card" href="FlareEngine_Chapter08.html">
+      <div class="ch-num" style="background:var(--yellow-light);color:var(--yellow)">8</div>
+      <div class="ch-body">
+        <h3>ゲームシステム <span class="ch-badge b-adv">応用</span></h3>
+        <p>Audio Manager・Dialogue・Inventory・Lets Wiggle(Tween)・Reaction Profile</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <!-- PART 4: Ship -->
+  <div class="part-label">Part 4 — 完成させてリリースする</div>
+  <div class="ch-list">
+    <a class="ch-card" href="FlareEngine_Chapter09.html">
+      <div class="ch-num" style="background:var(--blue-light);color:var(--blue)">9</div>
+      <div class="ch-body">
+        <h3>セーブ・シーン管理 <span class="ch-badge b-core">基礎</span></h3>
+        <p>JSONセーブ・Check-Point・World Variables・Scene/Screen Transition</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a class="ch-card" href="FlareEngine_Chapter10.html">
+      <div class="ch-num" style="background:var(--accent-light);color:var(--accent-dark)">10</div>
+      <div class="ch-body">
+        <h3>Safire 2Dカメラ <span class="ch-badge b-runner">ランナー活用</span></h3>
+        <p>ピクセルパーフェクト・Look Ahead・Dead Zone・カメラシェイク・推奨パラメータ</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a class="ch-card" href="FlareEngine_Chapter11.html">
+      <div class="ch-num" style="background:var(--accent-light);color:var(--accent-dark)">11</div>
+      <div class="ch-body">
+        <h3>実践：アイスクライム_リバイバルへの適用 <span class="ch-badge b-runner">ランナー活用</span></h3>
+        <p>プロジェクト設計・Infinite Walk設定・Google Playビルド注意点・5フェーズ開発ロードマップ</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <!-- APPENDIX -->
+  <div class="part-label">Appendix — リファレンス</div>
+  <div class="ch-list">
+    <a class="ch-card" href="FlareEngine_Appendix.html">
+      <div class="ch-num" style="background:#E2E3E5;color:#5F5E5A">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      </div>
+      <div class="ch-body">
+        <h3>リファレンス・トラブルシューティング <span class="ch-badge b-ref">リファレンス</span></h3>
+        <p>全24アビリティ一覧・BT ノード分類・よくあるエラー8選・Unity6移行チェックリスト・公式リンク集</p>
+      </div>
+      <svg class="ch-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>Flare Engine 2D Tools 初心者マニュアル ― 非公式ガイド</p>
+  <p>Flare Engineは <a href="https://assetstore.unity.com/packages/templates/systems/flare-engine-2d-tools-228468" target="_blank" rel="noopener">Two Bit Machines</a> が開発・販売するUnity Asset Storeのアセットです。</p>
+  <p>公式ドキュメント：<a href="https://twobitmachines.github.io/FlareEngineDocs/" target="_blank" rel="noopener">twobitmachines.github.io/FlareEngineDocs</a></p>
+</footer>
+
+</body>
+</html>
