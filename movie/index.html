@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>自作コンテンツ紹介 | ショート動画＆ゲーム</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2077000524682922"
+     crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     カラーパレット（明るいトーン）
+     ============================================================ */
+  :root {
+    --bg: #FFF6E5;
+    --bg-2: #FFE8C2;
+    --ink: #2A2522;
+    --ink-soft: #6B5F55;
+    --paper: #FFFFFF;
+    --line: #F2E2C2;
+
+    --video: #FF6B5B;        /* ショート動画 アクセント */
+    --video-soft: #FFE3DE;
+    --game: #4FB3D9;         /* ゲーム アクセント */
+    --game-soft: #DCF1FA;
+
+    --new: #FFB400;          /* NEW バッジ */
+    --updated: #6FCF6F;      /* UPDATED バッジ */
+
+    --shadow-sm: 0 2px 0 rgba(42, 37, 34, 0.06);
+    --shadow-md: 0 8px 22px rgba(42, 37, 34, 0.10), 0 2px 0 rgba(42, 37, 34, 0.06);
+    --shadow-lg: 0 16px 38px rgba(42, 37, 34, 0.16), 0 2px 0 rgba(42, 37, 34, 0.08);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans JP', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 12% 8%, #FFD98A 0, transparent 28%),
+      radial-gradient(circle at 92% 14%, #FFC9C2 0, transparent 26%),
+      radial-gradient(circle at 50% 92%, #C7E8F4 0, transparent 30%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 28px 96px;
+  }
+
+  /* ============================================================
+     ヘッダー
+     ============================================================ */
+  .hero {
+    text-align: center;
+    margin-bottom: 56px;
+    position: relative;
+  }
+  .hero .deco {
+    display: inline-flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .hero .deco span {
+    display: inline-block;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+  }
+  .hero .deco span:nth-child(1) { background: var(--video); }
+  .hero .deco span:nth-child(2) { background: var(--new); }
+  .hero .deco span:nth-child(3) { background: var(--game); }
+
+  .hero h1 {
+    font-family: 'M PLUS Rounded 1c', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 5.2vw, 56px);
+    margin: 0 0 10px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .hero h1 .accent {
+    background: linear-gradient(180deg, transparent 60%, #FFD98A 60% 92%, transparent 92%);
+    padding: 0 6px;
+  }
+  .hero p.lead {
+    margin: 0 auto;
+    max-width: 640px;
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+  .hero .meta {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    box-shadow: var(--shadow-sm);
+  }
+  .hero .meta b { color: var(--ink); font-weight: 700; }
+  .hero .meta .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--new);
+    box-shadow: 0 0 0 4px rgba(255, 180, 0, 0.18);
+  }
+
+  /* ============================================================
+     セクション見出し
+     ============================================================ */
+  .section { margin-bottom: 64px; }
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px dashed var(--line);
+  }
+  .section-head .title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-head .icon-badge {
+    width: 56px; height: 56px;
+    border-radius: 18px;
+    display: grid; place-items: center;
+    font-size: 26px;
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+  }
+  .section-head .icon-badge.video { background: var(--video); color: #fff; }
+  .section-head .icon-badge.game  { background: var(--game);  color: #fff; }
+
+  .section-head h2 {
+    font-family: 'M PLUS Rounded 1c', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    margin: 0;
+    line-height: 1.1;
+  }
+  .section-head h2 small {
+    display: block;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.14em;
+    margin-bottom: 4px;
+  }
+  .section-head .count {
+    font-size: 13px;
+    color: var(--ink-soft);
+    background: var(--paper);
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+  }
+  .section-head .count b { color: var(--ink); font-weight: 700; }
+
+  /* ============================================================
+     カードグリッド
+     ============================================================ */
+  .grid {
+    display: grid;
+    gap: 22px;
+  }
+  .grid.videos { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .grid.games  { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+
+  /* カード共通 */
+  .card {
+    background: var(--paper);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .card:focus-visible {
+    outline: 3px solid var(--new);
+    outline-offset: 3px;
+  }
+
+  /* 更新リング（NEW/UPDATEDのみ枠を強調） */
+  .card.is-new    { box-shadow: 0 0 0 3px var(--new),    var(--shadow-md); }
+  .card.is-updated { box-shadow: 0 0 0 3px var(--updated), var(--shadow-md); }
+  .card.is-new:hover    { box-shadow: 0 0 0 3px var(--new),    var(--shadow-lg); }
+  .card.is-updated:hover { box-shadow: 0 0 0 3px var(--updated), var(--shadow-lg); }
+
+  /* バッジ */
+  .badges {
+    position: absolute;
+    top: 12px; left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 2;
+  }
+  .badge {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .badge.new     { background: var(--new); }
+  .badge.updated { background: var(--updated); }
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+  }
+
+  .date-tag {
+    position: absolute;
+    top: 12px; right: 12px;
+    z-index: 2;
+    font-size: 11px;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.94);
+    padding: 4px 9px;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+    font-variant-numeric: tabular-nums;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* サムネイル：動画 */
+  .thumb-video {
+    aspect-ratio: 9 / 16;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+  }
+  .thumb-video img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .card:hover .thumb-video img { transform: scale(1.05); }
+  .thumb-video .play {
+    position: absolute;
+    inset: 0;
+    display: grid; place-items: center;
+    pointer-events: none;
+  }
+  .thumb-video .play svg {
+    width: 56px; height: 56px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
+    transition: transform 0.18s ease;
+  }
+  .card:hover .thumb-video .play svg { transform: scale(1.12); }
+  .thumb-video::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.35) 100%);
+    pointer-events: none;
+  }
+
+  /* サムネイル：ゲーム（プレースホルダ） */
+  .thumb-game {
+    aspect-ratio: 16 / 10;
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    color: #fff;
+  }
+  .thumb-game .ph-art {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 800;
+    font-size: 64px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-shadow: 0 4px 0 rgba(0,0,0,0.12);
+    z-index: 1;
+  }
+  .thumb-game::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg,
+        rgba(255,255,255,0.10) 0 14px,
+        rgba(255,255,255,0) 14px 28px);
+  }
+  /* 実画像が読み込まれた場合：プレースホルダ（頭文字＋ストライプ）を非表示 */
+  .thumb-game[data-has-image="1"]:not([data-fallback]) .ph-art { display: none; }
+  .thumb-game[data-has-image="1"]:not([data-fallback])::before { display: none; }
+  .thumb-game .thumb-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+    z-index: 0;
+  }
+  .card:hover .thumb-game .thumb-img { transform: scale(1.05); }
+  .thumb-game .platform-pill {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(255,255,255,0.95);
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 1;
+  }
+
+  /* 本文 */
+  .body {
+    padding: 16px 18px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .body .name {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.35;
+    margin: 0;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .body .desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin: 0;
+    flex: 1;
+    text-wrap: pretty;
+  }
+  .body .cta {
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .card[data-type="video"] .cta { color: var(--video); }
+  .card[data-type="game"]  .cta { color: var(--game); }
+  .body .cta svg {
+    transition: transform 0.18s ease;
+  }
+  .card:hover .body .cta svg { transform: translateX(3px); }
+
+  /* No 表示 */
+  .no-tag {
+    position: absolute;
+    bottom: 12px; right: 14px;
+    z-index: 2;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.08em;
+  }
+
+  /* ============================================================
+     フッター
+     ============================================================ */
+  .footer {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 12px;
+    margin-top: 40px;
+  }
+
+  /* ============================================================
+     凡例
+     ============================================================ */
+  .legend {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: center;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 10px 16px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    box-shadow: var(--shadow-sm);
+  }
+  .legend .key {
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .legend .key .sw {
+    width: 14px; height: 14px;
+    border-radius: 4px;
+  }
+  .legend .key.new .sw     { background: var(--new); }
+  .legend .key.updated .sw { background: var(--updated); }
+
+  /* ============================================================
+     レスポンシブ
+     ============================================================ */
+  @media (max-width: 600px) {
+    .wrap { padding: 36px 16px 64px; }
+    .section-head h2 { font-size: 24px; }
+    .grid.videos { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .grid.games  { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- ============================================================
+         ヘッダー
+         ============================================================ -->
+    <header class="hero">
+      <div class="deco" aria-hidden="true"><span></span><span></span><span></span></div>
+      <h1>じぶんで作った<br /><span class="accent">ショート動画＆ゲーム</span></h1>
+      <p class="lead">趣味で制作したコンテンツの紹介ページです。気になるサムネイルをクリックすると、それぞれの公開ページへ移動します。</p>
+      <div class="meta" id="metaBar">
+        <span class="dot"></span>
+        <span>最終更新：<b id="lastUpdated">—</b></span>
+        <span style="color:var(--line)">|</span>
+        <span>公開数：<b id="totalCount">—</b></span>
+      </div>
+      <div style="margin-top:18px;">
+        <div class="legend" role="note">
+          <span class="key new"><span class="sw"></span>NEW＝新規追加</span>
+          <span class="key updated"><span class="sw"></span>UPDATED＝更新</span>
+          <span style="color:var(--ink)">枠の色付きカードが対象</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         セクション：ショート動画
+         ============================================================ -->
+    <section class="section" id="videoSection">
+      <div class="section-head">
+        <div class="title">
+          <div class="icon-badge video" aria-hidden="true">🎬</div>
+          <h2><small>SHORT MOVIES</small>ショート動画</h2>
+        </div>
+        <div class="count">公開中 <b id="videoCount">0</b> 本</div>
+      </div>
+      <div class="grid videos" id="videoGrid"></div>
+    </section>
+
+    <!-- ============================================================
+         セクション：ゲーム
+         ============================================================ -->
+    <section class="section" id="gameSection">
+      <div class="section-head">
+        <div class="title">
+          <div class="icon-badge game" aria-hidden="true">🎮</div>
+          <h2><small>ORIGINAL GAMES</small>ゲーム</h2>
+        </div>
+        <div class="count">公開中 <b id="gameCount">0</b> 本</div>
+      </div>
+      <div class="grid games" id="gameGrid"></div>
+    </section>
+
+    <footer class="footer">© Self-made works ・ Have fun!</footer>
+  </div>
+
+<script>
+/* ================================================================
+   📝 コンテンツの追加・更新・削除はここだけ編集すればOK
+   ----------------------------------------------------------------
+   【追加】 ITEMS 配列の末尾に新しいオブジェクトを追加（id は重複しない数値）
+   【更新】 該当 id の項目を編集し、isUpdated: true / updatedDate を設定
+   【削除】 該当 id の行を丸ごと削除
+   ----------------------------------------------------------------
+   フィールド：
+     id          : 一意の番号
+     type        : "video" | "game"
+     name        : タイトル
+     desc        : 説明文
+     url         : 公開先URL
+     addedDate   : "YYYY-MM-DD" 公開日
+     isNew       : true で「NEW」バッジ＋枠色（新規追加分）
+     isUpdated   : true で「UPDATED」バッジ＋枠色（更新分）
+     updatedDate : "YYYY-MM-DD" 最終更新日（任意）
+     theme       : ゲーム用のサムネイル背景色（任意・省略時は自動）
+     image       : ゲーム用のスクショ画像パス（任意・推奨1280x800px / 16:10）
+                   未指定 or 読込失敗時はカラータイル+頭文字に自動フォールバック
+   ================================================================ */
+
+const ITEMS = [
+  // ----- ショート動画 -----
+  {
+    id: 1,
+    type: "video",
+    name: "戦国時代のレトロゲーム？",
+    desc: "なつかしくても、あり、、",
+    url: "https://youtube.com/shorts/I9lzdXGMX8M?si=Db8Xx5gePw3Z9SDQ",
+    addedDate: "2025-04-12",
+    isNew: false
+  },
+  {
+    id: 2,
+    type: "video",
+    name: "FCディスクシステム名作1",
+    desc: "これは難しいかも",
+    url: "https://youtube.com/shorts/r5uLJTZm-vQ?si=kZ-t8Ro2pyBSEHhJ",
+    addedDate: "2025-04-22",
+    isNew: false
+  },
+  {
+    id: 3,
+    type: "video",
+    name: "FCディスクシステム名作2",
+    desc: "難関ゲームでクリア困難",
+    url: "https://youtube.com/shorts/IRoIDeZoVeY?si=0vUCMbWr7PSkMGRe",
+    addedDate: "2025-05-02",
+    isUpdated: true,
+    updatedDate: "2026-05-08"
+  },
+  {
+    id: 4,
+    type: "video",
+    name: "少し前にリメイクされた",
+    desc: "名作だけど少し怖い",
+    url: "https://youtube.com/shorts/IdDMW-WA0EI?si=9RDpFIUHOteGyCV9",
+    addedDate: "2026-05-09",
+    isNew: true
+  },
+
+  // ----- ゲーム -----
+  {
+    id: 5,
+    type: "game",
+    name: "ガンスプリント",
+    desc: "銃を回転させて前に進むゲーム",
+    url: "https://play.google.com/store/apps/details?id=com.tetin.gunsprint",
+    addedDate: "2025-03-18",
+    theme: "#F08A4B",
+    image: ""   // 例: "images/gunsprint.jpg"（1280x800推奨）
+  },
+  {
+    id: 6,
+    type: "game",
+    name: "パズルゲーム2048を改良",
+    desc: "ビートに合わせてパズル",
+    url: "https://play.google.com/store/apps/details?id=com.tetin.beat2048",
+    addedDate: "2026-05-05",
+    isNew: true,
+    theme: "#7C5CD3",
+    image: ""   // 例: "images/beat2048.jpg"（1280x800推奨）
+  }
+];
+
+/* ================================================================
+   レンダリング処理（基本的に編集不要）
+   ================================================================ */
+
+// YouTube ShortsのURLから動画IDを取得
+function youtubeId(url) {
+  const m = url.match(/shorts\/([A-Za-z0-9_-]{6,})/);
+  return m ? m[1] : null;
+}
+
+// ゲームの自動カラーテーマ（themeが未指定の場合）
+const GAME_PALETTE = ["#F08A4B", "#7C5CD3", "#3FAE7C", "#E55E8B", "#3D8FD9", "#F2B237"];
+
+function gameThemeFor(item, idx) {
+  if (item.theme) return item.theme;
+  return GAME_PALETTE[idx % GAME_PALETTE.length];
+}
+
+// 日付フォーマット
+function fmtDate(s) {
+  if (!s) return "";
+  const [y, m, d] = s.split("-");
+  return `${y}.${m}.${d}`;
+}
+
+// バッジHTML
+function badgesFor(item) {
+  const out = [];
+  if (item.isNew)     out.push('<span class="badge new">NEW</span>');
+  if (item.isUpdated) out.push('<span class="badge updated">UPDATED</span>');
+  return out.length ? `<div class="badges">${out.join("")}</div>` : "";
+}
+
+// プラットフォーム判定
+function platformLabel(url) {
+  if (/play\.google\.com/.test(url)) return "Google Play";
+  if (/apps\.apple\.com/.test(url))  return "App Store";
+  return "プレイ";
+}
+
+// 動画カード
+function renderVideo(item) {
+  const vid = youtubeId(item.url);
+  const thumb = vid
+    ? `<img src="https://i.ytimg.com/vi/${vid}/hqdefault.jpg" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${vid}/mqdefault.jpg'" />`
+    : `<div style="width:100%;height:100%;background:linear-gradient(135deg,#FFB199,#FF6B5B)"></div>`;
+
+  const stateClass = item.isNew ? " is-new" : item.isUpdated ? " is-updated" : "";
+  const dateLabel = item.isUpdated ? fmtDate(item.updatedDate || item.addedDate) : fmtDate(item.addedDate);
+
+  return `
+    <a class="card${stateClass}" data-type="video" href="${item.url}" target="_blank" rel="noopener" aria-label="${item.name}">
+      ${badgesFor(item)}
+      <span class="date-tag">${dateLabel}</span>
+      <div class="thumb-video">
+        ${thumb}
+        <div class="play" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="30" fill="white" fill-opacity="0.92"/>
+            <path d="M26 22 L44 32 L26 42 Z" fill="#FF6B5B"/>
+          </svg>
+        </div>
+        <span class="no-tag">No.${item.id}</span>
+      </div>
+      <div class="body">
+        <h3 class="name">${item.name}</h3>
+        <p class="desc">${item.desc}</p>
+        <span class="cta">YouTubeで見る
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>`;
+}
+
+// ゲームカード
+function renderGame(item, idx) {
+  const color = gameThemeFor(item, idx);
+  const initial = item.name.slice(0, 2);
+
+  const stateClass = item.isNew ? " is-new" : item.isUpdated ? " is-updated" : "";
+  const dateLabel = item.isUpdated ? fmtDate(item.updatedDate || item.addedDate) : fmtDate(item.addedDate);
+
+  // 画像が指定されていれば <img>、無ければカラータイル+頭文字のプレースホルダ
+  // 画像読込失敗時は onerror で親に data-fallback を立て、CSSでプレースホルダを露出
+  const hasImage = !!(item.image && item.image.trim());
+  const visual = hasImage
+    ? `<img class="thumb-img" src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.parentNode.setAttribute('data-fallback','1');this.remove();" />`
+    : "";
+
+  return `
+    <a class="card${stateClass}" data-type="game" href="${item.url}" target="_blank" rel="noopener" aria-label="${item.name}">
+      ${badgesFor(item)}
+      <span class="date-tag">${dateLabel}</span>
+      <div class="thumb-game" style="background:${color}"${hasImage ? ' data-has-image="1"' : ''}>
+        ${visual}
+        <span class="ph-art">${initial}</span>
+        <span class="platform-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 2.5v19l8.5-9.5L3 2.5zm1.7 1.4 7 7-7 7v-14z"/></svg>
+          ${platformLabel(item.url)}
+        </span>
+        <span class="no-tag">No.${item.id}</span>
+      </div>
+      <div class="body">
+        <h3 class="name">${item.name}</h3>
+        <p class="desc">${item.desc}</p>
+        <span class="cta">ストアで開く
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>`;
+}
+
+// 並び順：NEW → UPDATED → その他、の中で公開日が新しい順
+function sortItems(arr) {
+  const rank = it => it.isNew ? 0 : it.isUpdated ? 1 : 2;
+  return [...arr].sort((a, b) => {
+    const r = rank(a) - rank(b);
+    if (r !== 0) return r;
+    const da = (a.updatedDate || a.addedDate || "");
+    const db = (b.updatedDate || b.addedDate || "");
+    return db.localeCompare(da);
+  });
+}
+
+// 描画
+function render() {
+  const videos = sortItems(ITEMS.filter(i => i.type === "video"));
+  const games  = sortItems(ITEMS.filter(i => i.type === "game"));
+
+  document.getElementById("videoGrid").innerHTML = videos.map(renderVideo).join("");
+  document.getElementById("gameGrid").innerHTML  = games.map((g, i) => renderGame(g, i)).join("");
+
+  document.getElementById("videoCount").textContent = videos.length;
+  document.getElementById("gameCount").textContent  = games.length;
+  document.getElementById("totalCount").textContent = ITEMS.length;
+
+  // 最終更新日（一番新しい addedDate / updatedDate）
+  const dates = ITEMS.flatMap(i => [i.addedDate, i.updatedDate]).filter(Boolean).sort();
+  document.getElementById("lastUpdated").textContent = fmtDate(dates[dates.length - 1]) || "—";
+}
+
+render();
+</script>
+</body>
+</html>
