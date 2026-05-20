@@ -436,6 +436,51 @@
   .legend .key.updated .sw { background: var(--updated); }
 
   /* ============================================================
+     体験談セクション
+     ============================================================ */
+  .story-section {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    padding: 32px 28px;
+    margin-top: 22px;
+  }
+  .story-section .story-title {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--ink);
+    margin: 0 0 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px dashed var(--line);
+    line-height: 1.4;
+  }
+  .story-block {
+    margin-bottom: 28px;
+  }
+  .story-block:last-child {
+    margin-bottom: 0;
+  }
+  .story-block h4 {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--game);
+    margin: 0 0 10px;
+    padding-left: 14px;
+    border-left: 4px solid var(--game);
+    line-height: 1.4;
+  }
+  .story-block p {
+    font-size: 14px;
+    line-height: 2;
+    color: var(--ink-soft);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* ============================================================
      レスポンシブ
      ============================================================ */
   @media (max-width: 600px) {
@@ -573,7 +618,28 @@ const ITEMS = [
     url: "https://play.google.com/store/apps/details?id=com.tetin.gunsprint",
     addedDate: "2025-03-18",
     theme: "#F08A4B",
-    image: ""   // 例: "images/gunsprint.jpg"（1280x800推奨）
+    image: "",   // 例: "images/gunsprint.jpg"（1280x800推奨）
+    story: {
+      title: "【Gun Sprint】HTMLアクションゲーム開発・苦労の軌跡",
+      sections: [
+        {
+          heading: "1. 物理演算の沼と「リコイル（反動）」のチューニング",
+          body: "ハイパーカジュアルゲームとして企画した「Gun Sprint」。タップして弾を撃ち、その反動（リコイル）で銃本体が回転しながら空中を進んでいくという直感的なゲームですが、HTMLとJavaScriptでこの「物理挙動」を違和感なく構築する工程はまさに沼でした。\n重力、回転の角速度、発射時のベクトルと反動の強さ。これらのバランスが少しでも崩れると、銃が画面外へ吹き飛んだり、逆に重すぎてすぐに落下してしまったりします。さらにブラウザベースのゲームでは、スマートフォンのスペックによってフレームレート（FPS）が微妙に異なるため、端末によって「飛距離が変わる」という致命的な問題に直面しました。処理落ちが発生しても挙動が変わらないよう、フレーム間の経過時間（デルタタイム）を正確に計算に組み込み、どの端末でも「気持ちよく銃がスピンする」状態へ持っていく微調整に最も時間を奪われました。"
+        },
+        {
+          heading: "2. ハイパーカジュアルの鉄則「引き算の設計」",
+          body: "アクションの基礎ができた後、次にぶつかったのはゲームデザインの壁です。開発を進めるうちに「弾数制限を入れたい」「敵にHPを設けてはどうか」と色々なアイデアが湧いてきました。しかし、ハイパーカジュアルゲームの鉄則は「説明不要で、片手でサクサク遊べること」です。\n要素を足せば足すほど、テンポが悪くなりプレイヤーの離脱を招きます。過去の設計書に立ち返り、湧き上がるクリエイターとしてのエゴを抑え、涙をのんで余計な要素を削ぎ落としました。「タイミングよくタップして敵を倒し、ゴールを目指すだけ」という極限までシンプルな構造（引き算の設計）を維持することが、実は一番の苦悩でした。"
+        },
+        {
+          heading: "3. Capacitorでのアプリ化と「死にゲー」ゆえの広告のジレンマ",
+          body: "最後の関門は、完成したHTMLゲームをCapacitorでスマホアプリ（iOS/Android）として出力し、AdMob広告を組み込む工程です。Gun Sprintのようなゲームは「ミスをして何度もリトライする」テンポの良さが命ですが、そこにどうやってインタースティシャル広告（全画面広告）を挟むかが最大のジレンマでした。\n表示頻度が多すぎればユーザーはストレスでアプリを消し、少なすぎれば収益になりません。「〇回リトライするごとに広告を出す」という絶妙なラインを探るため、何度も実機テストを繰り返しました。また、誤タップを誘発してAdMobアカウントが停止（BAN）されないよう、リトライボタンとバナー広告の配置をミリ単位で見直すなど、実装以外の運用ルールへの配慮にも神経をすり減らしました。"
+        },
+        {
+          heading: "総括",
+          body: "「銃が回転して進むだけ」という一見バカバカしくもシンプルなHTMLゲームですが、その裏には、緻密な物理演算の調整、徹底した引き算のゲームデザイン、そしてCapacitorを通じたアプリ・収益化実装という膨大な苦労が隠されています。しかし、苦労の末に実機でスムーズに銃がスピンし、爽快なエフェクトと共にゴールを打ち抜いた瞬間、すべての苦労を吹き飛ばすほどの大きな達成感を得ることができました。"
+        }
+      ]
+    }
   },
   {
     id: 6,
@@ -584,7 +650,28 @@ const ITEMS = [
     addedDate: "2026-05-05",
     isNew: true,
     theme: "#7C5CD3",
-    image: ""   // 例: "images/beat2048.jpg"（1280x800推奨）
+    image: "",   // 例: "images/beat2048.jpg"（1280x800推奨）
+    story: {
+      title: "【Beat2048】HTMLパズルゲーム開発・苦労の軌跡",
+      sections: [
+        {
+          heading: "1. 「2048」×「新感覚」の融合と、ブラウザ挙動の壁",
+          body: "ハイパーカジュアルゲームとして企画した「Beat2048」。世界的ヒット作「2048」のパズルロジックに、独自のテンポ感やリズム（Beat）を組み合わせるという構想は、頭の中では完璧でした。しかし、いざHTML/JavaScriptベースで実装を始めると、パズルのブロックが滑らかにスライドし、結合する瞬間の「気持ちよさ」をブラウザ上で再現するのに大苦戦しました。\nスマートフォンのブラウザ特有のタッチスクロールへの干渉や、PCでのクリック判定の差異など、環境ごとの挙動の違いに悩まされました。「サクサク感」が命のハイパーカジュアルゲームにおいて、アニメーションの少しのカクつきやタッチへの反応遅れは致命的です。処理を軽量化し、キャンバスやDOMの無駄な再描画を防ぐためのチューニングに、開発の大部分の時間を費やすことになりました。"
+        },
+        {
+          heading: "2. 魅力を伝えるアイコン制作と「引き算」のUIデザイン",
+          body: "ゲームのコアロジックが完成すると、次はビジュアル面の壁にぶつかりました。特に苦戦したのが、ストアやスマホのホーム画面で顔となる「512×512ピクセルのアプリアイコン」の作成です。「数字パズルであること」と「Beat2048というタイトルが持つポップなスピード感」を、小さな四角形の中でどう表現するか。AIツールなどを活用しながら何度も試行錯誤を繰り返し、「これだ！」と思えるデザインにたどり着くまではまさに暗中模索でした。\nまた、プレイ画面のUIも、最初はスコアやコンボ表示などの情報量が多くなりすぎてしまい、「ハイパーカジュアル」の鉄則である「説明不要のわかりやすさ」から外れてしまう失敗がありました。何度も初期の設計指示書に立ち返り、涙をのんで無駄な要素を削ぎ落とす「引き算のデザイン」を徹底しました。"
+        },
+        {
+          heading: "3. アプリ化への実装とマルチ展開への試行錯誤",
+          body: "そして最後の難関は、完成したHTMLをCapacitorを使ってスマホアプリとしてパッケージングし、収益化の仕組みを組み込む工程でした。AdMobのテスト広告実装のプレッシャー（誤タップによるアカウント停止リスクなど）に神経をすり減らしただけでなく、今回はWebゲームとしてStripe決済を組み込む方法や、検索流入を狙うためのSEO対策なども並行して調査したため、タスクの幅広さに圧倒されそうになりました。\n「ゲームを面白くする」クリエイターの視点と、「どうやって配信し、収益化し、多くの人に遊んでもらうか」というビジネス・エンジニアの視点を同時に持たなければならない点が最もハードでした。"
+        },
+        {
+          heading: "総括",
+          body: "「Beat2048」の開発は、一見シンプルなパズルゲームでありながら、ロジックの最適化からデザインの洗練、Capacitorでのアプリ構築、マネタイズ設計まで、ゲーム開発の苦労がすべて凝縮されたプロジェクトでした。思い通りの動きにならず頭を抱える夜もありましたが、実機でブロックが小気味よいビートと共に「2048」に到達した瞬間の爽快感は、すべての苦労を報いさせるほどの最高の達成感でした。"
+        }
+      ]
+    }
   }
 ];
 
@@ -712,6 +799,21 @@ function sortItems(arr) {
   });
 }
 
+// 体験談セクション
+function renderStory(item) {
+  if (!item.story) return "";
+  const blocks = item.story.sections.map(s => `
+    <div class="story-block">
+      <h4>${s.heading}</h4>
+      <p>${s.body.replace(/\n/g, '<br>')}</p>
+    </div>`).join("");
+  return `
+    <div class="story-section">
+      <h3 class="story-title">${item.story.title}</h3>
+      ${blocks}
+    </div>`;
+}
+
 // 描画
 function render() {
   const videos = sortItems(ITEMS.filter(i => i.type === "video"));
@@ -719,6 +821,12 @@ function render() {
 
   document.getElementById("videoGrid").innerHTML = videos.map(renderVideo).join("");
   document.getElementById("gameGrid").innerHTML  = games.map((g, i) => renderGame(g, i)).join("");
+
+  // 体験談をゲームセクションの後に挿入
+  const storyHtml = games.map(g => renderStory(g)).filter(Boolean).join("");
+  if (storyHtml) {
+    document.getElementById("gameGrid").insertAdjacentHTML("afterend", storyHtml);
+  }
 
   document.getElementById("videoCount").textContent = videos.length;
   document.getElementById("gameCount").textContent  = games.length;
