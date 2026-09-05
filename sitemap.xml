@@ -2,22 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tetinlab.com/</loc>
-    <lastmod>2026-05-20</lastmod>
-    <priority>1.0</priority>
+    <lastmod>2026-09-05</lastmod>
   </url>
   <url>
     <loc>https://tetinlab.com/cocktail/</loc>
     <lastmod>2026-05-20</lastmod>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tetinlab.com/movie/</loc>
     <lastmod>2026-05-09</lastmod>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tetinlab.com/unity/</loc>
     <lastmod>2026-05-20</lastmod>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tetinlab.com/articles/ai-game-first-step.html</loc>
+    <lastmod>2026-09-04</lastmod>
+  </url>
+  <url>
+    <loc>https://tetinlab.com/articles/ai-debug-loop.html</loc>
+    <lastmod>2026-09-03</lastmod>
+  </url>
+  <url>
+    <loc>https://tetinlab.com/articles/play-release-map.html</loc>
+    <lastmod>2026-09-02</lastmod>
+  </url>
+  <url>
+    <loc>https://tetinlab.com/games/pearl-gem.html</loc>
+    <lastmod>2026-09-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tetinlab.com/games/arrow-surusuru.html</loc>
+    <lastmod>2026-09-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tetinlab.com/games/jewelist.html</loc>
+    <lastmod>2026-09-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tetinlab.com/games/beat-2048.html</loc>
+    <lastmod>2026-09-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tetinlab.com/games/gun-sprint.html</loc>
+    <lastmod>2026-09-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tetinlab.com/games/ice-climb-proto.html</loc>
+    <lastmod>2026-09-05</lastmod>
   </url>
 </urlset>

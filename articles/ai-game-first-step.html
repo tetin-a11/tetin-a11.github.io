@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIとゲームを作る、最初の30分 | できるかな魔改造</title><meta name="description" content="初心者がAIに丸投げして迷子になる前に決めたい、ゲーム企画の最小セット。">
+  <link rel="canonical" href="https://tetinlab.com/articles/ai-game-first-step.html"><meta name="theme-color" content="#fffefa">
+  <meta property="og:type" content="article"><meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="AIとゲームを作る、最初の30分 | できるかな魔改造"><meta property="og:description" content="初心者がAIに丸投げして迷子になる前に決めたい、ゲーム企画の最小セット。"><meta property="og:url" content="https://tetinlab.com/articles/ai-game-first-step.html"><meta property="og:site_name" content="できるかな魔改造">
+  <meta property="og:image" content="https://tetinlab.com/assets/og-image.svg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AIとゲームを作る、最初の30分","description":"初心者がAIに丸投げして迷子になる前に決めたい、ゲーム企画の最小セット。","datePublished":"2026-09-04","author":{"@type":"Person","name":"TETIN"},"publisher":{"@type":"Organization","name":"できるかな魔改造"},"mainEntityOfPage":"https://tetinlab.com/articles/ai-game-first-step.html"}</script>
+</head><body><a class="skip-link" href="#main">本文へスキップ</a><header class="site-header" data-header>
+    <a class="brand" href="../" aria-label="できるかな魔改造 ホーム">
+      <span class="brand-mark"><i></i><i></i><i></i></span>
+      <span><b>できるかな魔改造</b><small>AI GAME LAB.</small></span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a5 5 0 0 0-6.4 6.4L3 18l3 3 5.3-5.3a5 5 0 0 0 6.4-6.4l-3 3-3-3 3-3Z"/></svg><span>MENU</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="メインナビゲーション">
+      <a href="../#lab">実験室</a><a href="../#roadmap">ゲームを作る</a><a href="../#ai">AI魔改造</a><a href="../#play">Google Play公開</a><a href="../#games">作ったゲーム</a>
+    </nav>
+    <a class="header-cta" href="../#roadmap">START LAB <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+  </header><main id="main" class="detail-main"><div class="detail-rail" aria-hidden="true">FIELD NOTE / 2026.09.04</div><article class="detail-article"><header class="detail-hero"><a class="back-link" href="../#articles">← 最新記事へ戻る</a><div class="detail-meta"><span>START HERE</span><time datetime="2026-09-04">2026.09.04</time><span>6 min READ</span></div><p class="section-code">// ゲームを作る</p><h1>AIとゲームを作る、最初の30分</h1><p class="detail-description">初心者がAIに丸投げして迷子になる前に決めたい、ゲーム企画の最小セット。</p><div class="tag-row"><span># AIゲーム開発</span><span># 初心者</span><span># 企画</span></div></header><div class="article-prose"><h2 id="最初に決めるのは面白いゲームではない">最初に決めるのは「面白いゲーム」ではない</h2>
+<p>最初の目標は、壮大な企画書を作ることではありません。30分後に画面の中で何かが動く、そのための<strong>小さな約束</strong>を決めます。</p>
+<ul>
+<li>指一本で遊べる</li>
+<li>1プレイは60秒以内</li>
+<li>成功と失敗がひと目で分かる</li>
+</ul>
+<p>この3つをAIに渡し、ゲーム案を3案だけ出してもらいます。10案では選ぶだけで疲れます。</p>
+<h2 id="実際に使うプロンプト">実際に使うプロンプト</h2>
+<pre><code>Android向けの小さなゲームを作ります。
+操作は指一本、1プレイ60秒以内、成功と失敗が明確な企画を3案ください。
+各案に「ゲームループ」「最小実装」「作りすぎないために捨てる機能」を書いてください。
+私はゲーム開発初心者です。専門用語は短く説明してください。</code></pre>
+<h2 id="aiの答えは仕様書ではなく最初の部品">AIの答えは仕様書ではなく、最初の部品</h2>
+<p>AIが出した案は完成品ではありません。自分が一番試したい動詞をひとつ選びます。「避ける」「積む」「そろえる」のような動詞です。ここから実装を始めます。</p>
+<blockquote>LAB NOTE: 迷ったら、説明を読まなくても5秒で操作が分かる案を優先します。</blockquote></div><aside class="article-next"><span>NEXT EXPERIMENT</span><h2>読んだら、小さく試そう。</h2><a class="button button-primary" href="../#roadmap">魔改造をはじめる <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></aside></article></main><footer class="site-footer">
+    <div class="footer-brand"><span class="brand-mark"><i></i><i></i><i></i></span><div><b>できるかな魔改造</b><small>AI GAME LAB. / BY TETIN</small></div></div>
+    <p>失敗は、次の魔改造パーツ。</p>
+    <div class="footer-links"><a href="../#roadmap">ゲームを作る</a><a href="../#lab">実験室</a><a href="../#games">作ったゲーム</a></div>
+    <small class="copyright">© 2026 TETIN. BUILT WITH AI, TESTED BY HUMAN.</small>
+  </footer><script src="../assets/main.js" defer></script></body></html>

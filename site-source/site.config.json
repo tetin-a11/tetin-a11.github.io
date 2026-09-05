@@ -1,0 +1,14 @@
+{
+  "name": "できるかな魔改造",
+  "englishName": "AI GAME LAB.",
+  "url": "https://tetinlab.com",
+  "description": "AIと一緒にゲームを企画し、作り、失敗し、魔改造してGoogle Playへ公開するまでを初心者目線で記録する実験型メディア。",
+  "author": "TETIN",
+  "lastUpdated": "2026-09-05",
+  "googlePlayDeveloperUrl": "https://play.google.com/store/apps/developer?id=TETIN",
+  "legacyPaths": [
+    { "path": "cocktail/", "lastmod": "2026-05-20" },
+    { "path": "movie/", "lastmod": "2026-05-09" },
+    { "path": "unity/", "lastmod": "2026-05-20" }
+  ]
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#d7ff36" stroke-opacity=".12"/></pattern></defs>
+  <rect width="1200" height="630" fill="#fffefa"/><rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="970" cy="300" r="230" fill="#d7ff36" opacity=".05"/><circle cx="970" cy="300" r="150" fill="none" stroke="#d7ff36" stroke-opacity=".16"/>
+  <rect x="72" y="64" width="54" height="54" fill="#d7ff36"/><rect x="84" y="82" width="9" height="9" fill="#11130f"/><rect x="105" y="82" width="9" height="9" fill="#11130f"/><rect x="88" y="102" width="22" height="5" fill="#11130f"/>
+  <text x="145" y="88" fill="#11130f" font-family="Arial,sans-serif" font-size="26" font-weight="800">できるかな魔改造</text><text x="145" y="113" fill="#62780a" font-family="monospace" font-size="14" font-weight="700" letter-spacing="4">AI GAME LAB.</text>
+  <text x="72" y="235" fill="#11130f" font-family="Arial,sans-serif" font-size="78" font-weight="900">AIと一緒なら、</text><text x="72" y="340" fill="#769400" font-family="Arial,sans-serif" font-size="98" font-weight="900">ゲームはどこまで作れる？</text>
+  <text x="76" y="414" fill="#565b52" font-family="Arial,sans-serif" font-size="28">企画 → 開発 → 魔改造 → Google Play公開まで。</text>
+  <rect x="72" y="485" width="455" height="60" fill="#d7ff36"/><text x="98" y="524" fill="#11130f" font-family="monospace" font-size="22" font-weight="800">AI × GAME × MA-KAIZO</text>
+  <path d="M945 198h120v95H945z" fill="none" stroke="#d7ff36" stroke-width="9"/><rect x="972" y="231" width="14" height="14" fill="#d7ff36"/><rect x="1024" y="231" width="14" height="14" fill="#d7ff36"/><path d="M978 268h54" stroke="#d7ff36" stroke-width="8"/>
+</svg>

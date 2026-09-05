@@ -1,895 +1,203 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tetinlab | Unity開発・ゲーム制作・AI実験の個人開発ブログ</title>
-<meta name="description" content="Tetinlabは、Unityを用いた2Dゲーム開発、ブラウザゲーム制作、AI技術の実験記録を発信する個人開発ブログです。Flare Engine解説やカクテルデータベースなど独自コンテンツを公開中。">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2077000524682922"
-     crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0d0520;
-    --bg2: #130830;
-    --neon-pink: #ff3fa4;
-    --neon-cyan: #00f5ff;
-    --neon-yellow: #ffe600;
-    --neon-purple: #bf5fff;
-    --neon-green: #39ff14;
-    --text: #f0e6ff;
-    --pixel: 4px;
-  }
+<!doctype html>
+<html lang="ja"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>できるかな魔改造 | AIと一緒なら、ゲームはどこまで作れる？</title><meta name="description" content="AIと一緒にゲームを企画し、作り、失敗し、魔改造してGoogle Playへ公開するまでを初心者目線で記録する実験型メディア。">
+  <link rel="canonical" href="https://tetinlab.com"><meta name="theme-color" content="#fffefa">
+  <meta property="og:type" content="website"><meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="できるかな魔改造 | AIと一緒なら、ゲームはどこまで作れる？"><meta property="og:description" content="AIと一緒にゲームを企画し、作り、失敗し、魔改造してGoogle Playへ公開するまでを初心者目線で記録する実験型メディア。"><meta property="og:url" content="https://tetinlab.com"><meta property="og:site_name" content="できるかな魔改造">
+  <meta property="og:image" content="https://tetinlab.com/assets/og-image.svg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"できるかな魔改造","alternateName":"AI GAME LAB.","url":"https://tetinlab.com","description":"AIと一緒にゲームを企画し、作り、失敗し、魔改造してGoogle Playへ公開するまでを初心者目線で記録する実験型メディア。","author":{"@type":"Person","name":"TETIN"}}</script>
+</head><body><a class="skip-link" href="#main">本文へスキップ</a><header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="できるかな魔改造 ホーム">
+      <span class="brand-mark"><i></i><i></i><i></i></span>
+      <span><b>できるかな魔改造</b><small>AI GAME LAB.</small></span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a5 5 0 0 0-6.4 6.4L3 18l3 3 5.3-5.3a5 5 0 0 0 6.4-6.4l-3 3-3-3 3-3Z"/></svg><span>MENU</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="メインナビゲーション">
+      <a href="#lab">実験室</a><a href="#roadmap">ゲームを作る</a><a href="#ai">AI魔改造</a><a href="#play">Google Play公開</a><a href="#games">作ったゲーム</a>
+    </nav>
+    <a class="header-cta" href="#roadmap">START LAB <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+  </header><main id="main">
+  <section class="hero" id="top">
+    <div class="hero-noise"></div><div class="hero-wire wire-a"></div><div class="hero-wire wire-b"></div>
+    <div class="hero-copy">
+      <div class="status-pill"><span></span> LAB STATUS: MAKING</div>
+      <p class="hero-kicker">AI × GAME × MA-KAIZO</p>
+      <h1><span>できるかな</span><em>魔改造</em></h1>
+      <p class="hero-lead">AIと一緒なら、<br>ゲームはどこまで作れる？</p>
+      <p class="hero-sub">企画 → 開発 → 魔改造 → Google Play公開まで、<br class="desktop-only">初心者目線で全部やってみる。</p>
+      <div class="hero-actions"><a class="button button-primary" href="#roadmap">魔改造をはじめる <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><a class="button button-ghost" href="#lab">実験ログをのぞく</a></div>
+      <div class="hero-stats"><div><b>06</b><span>GAMES BUILT</span></div><div><b>∞</b><span>TRIAL & ERROR</span></div><div><b>01</b><span>HUMAN + AI</span></div></div>
+    </div>
+    <div class="hero-machine" aria-label="AI、ゲーム、魔改造が接続された実験装置のイラスト">
+      <div class="machine-label">MODIFICATION UNIT / 01</div>
+      <div class="machine-screen"><span class="screen-grid"></span><div class="screen-face"><i></i><i></i><b></b></div><p>READY TO<br><strong>MA-KAIZO?</strong></p><span class="screen-cursor"></span></div>
+      <div class="machine-flow"><div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M9 12h.01M15 12h.01M9 16h6M12 7V3m-2 0h4"/></svg><span>AI</span></div><b>+</b><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a5 5 0 0 1 4.7 6.7l-1.1 3.1a2.2 2.2 0 0 1-3.7.8L15 17H9l-1.9 1.6a2.2 2.2 0 0 1-3.7-.8l-1.1-3.1A5 5 0 0 1 7 8Z"/><path d="M7 12v4m-2-2h4m7-1h.01m2 2h.01"/></svg><span>GAME</span></div><b>+</b><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a5 5 0 0 0-6.4 6.4L3 18l3 3 5.3-5.3a5 5 0 0 0 6.4-6.4l-3 3-3-3 3-3Z"/></svg><span>改造</span></div></div>
+      <div class="machine-controls"><span class="dial"></span><span class="meter"><i></i></span><span class="light"></span><span class="light"></span><span class="light active"></span></div>
+      <div class="machine-tape">CAUTION: IDEAS MAY MUTATE</div>
+    </div>
+    <a class="scroll-cue" href="#now"><span></span>SCROLL TO EXPERIMENT</a>
+  </section>
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <section class="section now-section" id="now"><div class="section-head reveal"><div><p class="section-code">// CURRENT MODIFICATION</p><h2>今回の<span>魔改造</span></h2></div><p>完成より、変化の途中がおもしろい。<br>いま実験台に載っているプロジェクト。</p></div>
+    <div class="current-project reveal"><div class="current-visual"><div class="game-visual game-visual--large accent-lime" aria-hidden="true">
+    <span class="visual-grid"></span><span class="orb orb-a"></span><span class="orb orb-b"></span>
+    <span class="pixel-creature"><i></i><i></i><i></i><i></i></span>
+    <span class="game-number">#06</span>
+    <span class="scanline"></span>
+  </div><div class="floating-note note-one">AI UI TUNING <b>03</b></div><div class="floating-note note-two">PLAY FEEL <b>++</b></div></div>
+      <div class="current-info"><div class="project-flags"><span>GAME #06</span><span class="live-dot">LIVE LOG</span></div><p class="mono">PROJECT / PEARL-GEM</p><h3>パールジェム</h3><p>宝石のきらめきと手触りをAIと一緒に磨き込む、最新の魔改造プロジェクト。 見た目だけでなく「触って気持ちいい」を作れるか、AIとの対話を修理記録ごと公開します。</p>
+      <div class="progress-label"><span>MODIFICATION PROGRESS</span><b>62%</b></div><div class="progress"><i style="width:62%"></i></div>
+      <dl><div><dt>今回の課題</dt><dd>宝石の手触りを強くする</dd></div><div><dt>AIの担当</dt><dd>演出案 / コード改善 / 比較</dd></div><div><dt>人間の担当</dt><dd>遊んで判断する</dd></div></dl>
+      <a class="text-link" href="games/pearl-gem.html">実験ログを最初から読む <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div></div>
+  </section>
 
-  html { scroll-behavior: smooth; }
+  <section class="section latest-game"><div class="mini-label reveal">LATEST OUTPUT / GAME #06</div><div class="latest-layout">
+    <div class="latest-copy reveal"><p class="section-code">// NEWEST GAME</p><h2>AIと磨いた、<br><span>最新ゲーム。</span></h2><p>作って終わりではなく、公開したあとも数字と反応を見て魔改造。開発期間、使ったAI、失敗した実装まで一本のログにします。</p><div class="spec-grid"><div><span>PLATFORM</span><b>Android</b></div><div><span>STATUS</span><b>In progress</b></div><div><span>DEVELOPER</span><b>TETIN</b></div><div><span>VERSION</span><b>Lab build</b></div></div><a class="button button-outline" href="games/pearl-gem.html">ゲーム詳細を見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>
+    <div class="phone-stage reveal"><div class="phone phone-back"><div class="phone-screen accent-violet"><span class="gem gem-1"></span><span class="gem gem-2"></span><span class="gem gem-3"></span><b>PEARL<br>GEM</b></div></div><div class="phone phone-front"><div class="phone-screen accent-lime"><span class="score">SCORE 02480</span><div class="gem-board"><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i><i class="g1"></i></div><span class="swipe">SWIPE →</span></div></div><span class="phone-caption">SCREEN MOCK / ART IN PROGRESS</span></div>
+  </div></section>
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DotGothic16', monospace;
-    overflow-x: hidden;
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect x='0' y='0' width='4' height='4' fill='%23ff3fa4'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%23ff3fa4'/%3E%3Crect x='8' y='8' width='4' height='4' fill='%23ff3fa4'/%3E%3C/svg%3E") 2 2, auto;
-  }
+  <section class="section lab-section" id="lab"><div class="section-head section-head-light reveal"><div><p class="section-code">// DEKIRUKANA LABORATORY</p><h2>できるかな<span>実験室</span></h2></div><p>「本当にできる？」を、やって確かめる。<br>失敗も数字もノーカット。</p></div><div class="experiment-grid"><article class="experiment-card reveal"><div class="experiment-top"><span>EXP. 001</span><span class="experiment-status">進行中</span></div><div class="experiment-icon exp-0"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M9 12h.01M15 12h.01M9 16h6M12 7V3m-2 0h4"/></svg></div><h3>AIだけでゲームは作れる？</h3><p>AIに企画・実装・デバッグを頼み、人間は判断だけで完成まで行けるか。</p><div class="experiment-meter"><i style="width:62%"></i><b>62%</b></div><a href="#articles">仮説と途中経過を見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></article><article class="experiment-card reveal"><div class="experiment-top"><span>EXP. 002</span><span class="experiment-status">準備中</span></div><div class="experiment-icon exp-1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>初心者でも7日で公開できる？</h3><p>1日ごとの作業時間と詰まった場所を、隠さずタイムライン化。</p><div class="experiment-meter"><i style="width:18%"></i><b>18%</b></div><a href="#articles">仮説と途中経過を見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></article><article class="experiment-card reveal"><div class="experiment-top"><span>EXP. 003</span><span class="experiment-status">計画中</span></div><div class="experiment-icon exp-2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5L12 2Z"/><path d="m18 16 .7 2.3L21 19l-2.3.7L18 22l-.7-2.3L15 19l2.3-.7L18 16Z"/></svg></div><h3>15秒広告をAIだけで作れる？</h3><p>ゲーム画面から構成、コピー、動画素材までAIで組み立てる。</p><div class="experiment-meter"><i style="width:04%"></i><b>04%</b></div><a href="#articles">仮説と途中経過を見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></article></div><div class="lab-principle reveal"><span>LAB RULE / 01</span><p>成功だけを見せない。</p><b>仮説 → 方法 → 問題発生 → 魔改造 → 結果 → 評価</b></div></section>
 
-  /* ── Starfield ── */
-  #stars {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      radial-gradient(ellipse at 20% 30%, rgba(191,95,255,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 70%, rgba(0,245,255,0.08) 0%, transparent 60%);
-  }
-  .star {
-    position: absolute;
-    width: 2px; height: 2px;
-    background: white;
-    image-rendering: pixelated;
-    animation: twinkle var(--d, 3s) var(--delay, 0s) infinite;
-  }
-  @keyframes twinkle {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.1; }
-  }
+  <section class="section roadmap-section" id="roadmap"><div class="section-head reveal"><div><p class="section-code">// BUILD YOUR FIRST GAME</p><h2>ゲームを作る<span>6 STEP</span></h2></div><p>知識ゼロから、端末で遊べるところまで。<br>ひとつずつ配線していこう。</p></div><div class="roadmap"><article class="road-step reveal"><span class="step-no">STEP 01</span><div class="step-node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5L12 2Z"/><path d="m18 16 .7 2.3L21 19l-2.3.7L18 22l-.7-2.3L15 19l2.3-.7L18 16Z"/></svg></div><h3>ゲームを企画する</h3><p>遊びの芯を1文にする</p><a href="#articles" aria-label="ゲームを企画するの記事を見る">↗</a></article><article class="road-step reveal"><span class="step-no">STEP 02</span><div class="step-node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a5 5 0 0 0-6.4 6.4L3 18l3 3 5.3-5.3a5 5 0 0 0 6.4-6.4l-3 3-3-3 3-3Z"/></svg></div><h3>環境を作る</h3><p>Unity / Expo / Android</p><a href="#articles" aria-label="環境を作るの記事を見る">↗</a></article><article class="road-step reveal"><span class="step-no">STEP 03</span><div class="step-node"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M9 12h.01M15 12h.01M9 16h6M12 7V3m-2 0h4"/></svg></div><h3>AIに書いてもらう</h3><p>小さく頼んで動かす</p><a href="#articles" aria-label="AIに書いてもらうの記事を見る">↗</a></article><article class="road-step reveal"><span class="step-no">STEP 04</span><div class="step-node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a5 5 0 0 1 4.7 6.7l-1.1 3.1a2.2 2.2 0 0 1-3.7.8L15 17H9l-1.9 1.6a2.2 2.2 0 0 1-3.7-.8l-1.1-3.1A5 5 0 0 1 7 8Z"/><path d="M7 12v4m-2-2h4m7-1h.01m2 2h.01"/></svg></div><h3>素材を作る</h3><p>画像・キャラ・効果音</p><a href="#articles" aria-label="素材を作るの記事を見る">↗</a></article><article class="road-step reveal"><span class="step-no">STEP 05</span><div class="step-node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div><h3>ゲームを動かす</h3><p>端末テストで壊す</p><a href="#articles" aria-label="ゲームを動かすの記事を見る">↗</a></article><article class="road-step reveal"><span class="step-no">STEP 06</span><div class="step-node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a5 5 0 0 0-6.4 6.4L3 18l3 3 5.3-5.3a5 5 0 0 0 6.4-6.4l-3 3-3-3 3-3Z"/></svg></div><h3>AIで魔改造する</h3><p>失敗ログから強くする</p><a href="#articles" aria-label="AIで魔改造するの記事を見る">↗</a></article></div><div class="roadmap-cta reveal"><div><span>DON'T KNOW WHERE TO START?</span><h3>最初の30分を、一緒に。</h3></div><a class="button button-dark" href="articles/ai-game-first-step.html">はじめてのゲーム企画 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div></section>
 
-  /* ── Scanlines overlay ── */
-  body::after {
-    content: '';
-    position: fixed; inset: 0; z-index: 1000; pointer-events: none;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 3px,
-      rgba(0,0,0,0.08) 3px,
-      rgba(0,0,0,0.08) 4px
-    );
-  }
+  <section class="section ai-section" id="ai"><div class="ai-heading reveal"><p class="section-code">// AI MODIFICATION TOOLKIT</p><h2>AIは、答えを出す機械じゃない。<br><span>一緒に直す相棒だ。</span></h2></div><div class="ai-layout"><div class="prompt-window reveal"><div class="window-bar"><span></span><span></span><span></span><b>PROMPT_LOG_004.txt</b></div><div class="prompt-body"><p class="prompt-label">YOU / 14:32</p><p>このゲームの操作が気持ちよくありません。<br><mark>コードを全部書き直さず</mark>、原因を3つに絞ってください。</p><p class="prompt-label ai-label">AI / 14:32</p><p>まず入力遅延、フィードバック、難易度曲線を分けて計測しましょう。最初の確認は…<span class="cursor">_</span></p></div><div class="window-result"><span>RESULT</span><b>「なんとなく」を、直せる課題に変換。</b></div></div><div class="ai-tools"><article class="ai-tool reveal"><span>01</span><div><h3>企画する</h3><p>アイデアを遊べるサイズまで削る</p></div><b>↗</b></article><article class="ai-tool reveal"><span>02</span><div><h3>コードを書く</h3><p>機能を小さく分けて実装する</p></div><b>↗</b></article><article class="ai-tool reveal"><span>03</span><div><h3>デバッグする</h3><p>エラーの原因と確認手順を残す</p></div><b>↗</b></article><article class="ai-tool reveal"><span>04</span><div><h3>素材を作る</h3><p>世界観を揃えて試作を速くする</p></div><b>↗</b></article><article class="ai-tool reveal"><span>05</span><div><h3>公開を助ける</h3><p>ストア文案や画像構成を比較する</p></div><b>↗</b></article></div></div></section>
 
-  /* ── Pixel border helper ── */
-  .pixel-box {
-    image-rendering: pixelated;
-    border: 4px solid;
-    box-shadow: 4px 4px 0 currentColor;
-  }
+  <section class="section play-section" id="play"><div class="section-head reveal"><div><p class="section-code">// ROAD TO GOOGLE PLAY</p><h2>作った。その先の<span>公開まで。</span></h2></div><p>初めて詰まるのは、コードだけじゃない。<br>AABも審査も収益化も、一本道にする。</p></div><div class="play-track reveal"><div class="play-step"><span>01</span><div class="play-node"></div><b>企画</b><small>IDEA</small></div><div class="play-step"><span>02</span><div class="play-node"></div><b>AI</b><small>PROMPT</small></div><div class="play-step"><span>03</span><div class="play-node"></div><b>開発</b><small>BUILD</small></div><div class="play-step"><span>04</span><div class="play-node"></div><b>テスト</b><small>TEST</small></div><div class="play-step"><span>05</span><div class="play-node"></div><b>ストア素材</b><small>ASSET</small></div><div class="play-step"><span>06</span><div class="play-node"></div><b>審査</b><small>REVIEW</small></div><div class="play-step"><span>07</span><div class="play-node">✓</div><b>公開</b><small>SHIP</small></div><div class="play-step"><span>08</span><div class="play-node"></div><b>AdMob</b><small>EARN</small></div></div><div class="warning-strip reveal"><span>REAL TROUBLE LOG</span><p>審査で止まった場所、作り直した画像、分かりにくかった設定も記録します。</p><a href="articles/play-release-map.html">公開ロードマップを見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div></section>
 
-  /* ── Nav ── */
-  nav {
-    position: relative; z-index: 10;
-    padding: 16px 32px;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 2px solid rgba(255,62,164,0.3);
-  }
-  .nav-logo {
-    font-family: 'DotGothic16', monospace;
-    font-size: 18px;
-    color: var(--neon-pink);
-    text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
-    letter-spacing: 2px;
-  }
-  .nav-tag {
-    font-size: 11px;
-    color: var(--neon-cyan);
-    opacity: 0.7;
-    letter-spacing: 3px;
-  }
+  <section class="section articles-section" id="articles"><div class="section-head reveal"><div><p class="section-code">// LATEST FIELD NOTES</p><h2>最新の<span>修理ログ</span></h2></div><p>うまくいったコードより、<br>どう直したかを持ち帰ろう。</p></div><div class="article-grid"><article class="article-card reveal">
+    <a href="articles/ai-game-first-step.html">
+      <div class="article-index">01<span></span></div>
+      <div class="article-meta"><span>ゲームを作る</span><time datetime="2026-09-04">2026.09.04</time></div>
+      <h3>AIとゲームを作る、最初の30分</h3>
+      <p>初心者がAIに丸投げして迷子になる前に決めたい、ゲーム企画の最小セット。</p>
+      <div class="article-foot"><span>6 min READ</span><span class="round-arrow">↗</span></div>
+    </a>
+  </article><article class="article-card reveal">
+    <a href="articles/ai-debug-loop.html">
+      <div class="article-index">02<span></span></div>
+      <div class="article-meta"><span>AI魔改造</span><time datetime="2026-09-03">2026.09.03</time></div>
+      <h3>AIのコードが動かないときの「修理ログ」</h3>
+      <p>エラー全文・直前の変更・期待した動作をAIへ渡し、失敗を再現可能な記録に変える方法。</p>
+      <div class="article-foot"><span>8 min READ</span><span class="round-arrow">↗</span></div>
+    </a>
+  </article><article class="article-card reveal">
+    <a href="articles/play-release-map.html">
+      <div class="article-index">03<span></span></div>
+      <div class="article-meta"><span>Google Play公開</span><time datetime="2026-09-02">2026.09.02</time></div>
+      <h3>Google Play公開までの8つの関門</h3>
+      <p>企画からAAB、ストア素材、審査、AdMobまでを初心者向けに一枚の道筋に整理。</p>
+      <div class="article-foot"><span>10 min READ</span><span class="round-arrow">↗</span></div>
+    </a>
+  </article></div><div class="center-action reveal"><a class="button button-outline" href="#articles">すべての記事を見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div></section>
 
-  /* ── Hero ── */
-  .hero {
-    position: relative; z-index: 2;
-    min-height: 90vh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 60px 20px 40px;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .hero-pixel-art {
-    margin-bottom: 40px;
-    animation: float 4s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
-
-  .hero-title {
-    font-family: 'DotGothic16', monospace;
-    font-size: clamp(28px, 6vw, 72px);
-    line-height: 1.2;
-    letter-spacing: 4px;
-    color: white;
-    text-shadow:
-      0 0 10px var(--neon-pink),
-      0 0 30px var(--neon-pink),
-      0 0 60px rgba(255,62,164,0.4);
-    animation: glitch 6s infinite;
-  }
-
-  @keyframes glitch {
-    0%, 95%, 100% { text-shadow: 0 0 10px var(--neon-pink), 0 0 30px var(--neon-pink), 0 0 60px rgba(255,62,164,0.4); transform: none; }
-    96% { text-shadow: -3px 0 var(--neon-cyan), 3px 0 var(--neon-pink); transform: skewX(-2deg); }
-    97% { text-shadow: 3px 0 var(--neon-cyan), -3px 0 var(--neon-pink); transform: skewX(2deg); }
-    98% { text-shadow: 0 0 10px var(--neon-pink), 0 0 30px var(--neon-pink); transform: none; }
-  }
-
-  .hero-sub {
-    margin-top: 16px;
-    font-size: 13px;
-    color: var(--neon-cyan);
-    letter-spacing: 6px;
-    opacity: 0.8;
-  }
-
-  .hero-blink {
-    display: inline-block;
-    width: 10px; height: 18px;
-    background: var(--neon-cyan);
-    margin-left: 4px;
-    vertical-align: middle;
-    animation: blink 1s step-start infinite;
-  }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-  .scroll-hint {
-    margin-top: 60px;
-    font-size: 11px;
-    color: var(--neon-purple);
-    letter-spacing: 4px;
-    animation: bounce 2s ease-in-out infinite;
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); opacity: 0.7; }
-    50% { transform: translateY(6px); opacity: 1; }
-  }
-
-  /* ── Section heading ── */
-  .section-label {
-    position: relative; z-index: 2;
-    text-align: center;
-    padding: 20px;
-    font-size: 11px;
-    letter-spacing: 8px;
-    color: var(--neon-yellow);
-    text-shadow: 0 0 8px var(--neon-yellow);
-  }
-
-  /* ── Cards ── */
-  .cards-wrapper {
-    position: relative; z-index: 2;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px 24px 80px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 36px;
-  }
-
-  .card {
-    background: rgba(20, 8, 50, 0.85);
-    border: 3px solid;
-    position: relative;
-    transition: transform 0.15s, box-shadow 0.15s;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .card::before {
-    content: '';
-    position: absolute; inset: 0;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .card:hover::before { opacity: 1; }
-  .card:hover {
-    transform: translate(-4px, -4px);
-  }
-
-  .card--cocktail {
-    border-color: var(--neon-pink);
-    box-shadow: 6px 6px 0 var(--neon-pink), 0 0 20px rgba(255,62,164,0.2);
-  }
-  .card--cocktail::before { background: radial-gradient(circle at 30% 30%, rgba(255,62,164,0.08), transparent 70%); }
-  .card--cocktail:hover { box-shadow: 8px 8px 0 var(--neon-pink), 0 0 40px rgba(255,62,164,0.35); }
-
-  .card--video {
-    border-color: var(--neon-cyan);
-    box-shadow: 6px 6px 0 var(--neon-cyan), 0 0 20px rgba(0,245,255,0.2);
-  }
-  .card--video::before { background: radial-gradient(circle at 30% 30%, rgba(0,245,255,0.08), transparent 70%); }
-  .card--video:hover { box-shadow: 8px 8px 0 var(--neon-cyan), 0 0 40px rgba(0,245,255,0.35); }
-
-  .card--game {
-    border-color: var(--neon-green);
-    box-shadow: 6px 6px 0 var(--neon-green), 0 0 20px rgba(57,255,20,0.2);
-  }
-  .card--game::before { background: radial-gradient(circle at 30% 30%, rgba(57,255,20,0.08), transparent 70%); }
-  .card--game:hover { box-shadow: 8px 8px 0 var(--neon-green), 0 0 40px rgba(57,255,20,0.35); }
-
-  .card-art {
-    width: 100%;
-    height: 180px;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(0,0,0,0.3);
-    border-bottom: 3px solid;
-    position: relative;
-    overflow: hidden;
-  }
-  .card--cocktail .card-art { border-color: var(--neon-pink); }
-  .card--video .card-art { border-color: var(--neon-cyan); }
-  .card--game .card-art { border-color: var(--neon-green); }
-
-  .card-art::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: repeating-linear-gradient(
-      90deg,
-      transparent, transparent 7px,
-      rgba(255,255,255,0.015) 7px, rgba(255,255,255,0.015) 8px
-    );
-    pointer-events: none;
-  }
-
-  .card-body {
-    padding: 24px 24px 20px;
-  }
-
-  .card-tag {
-    display: inline-block;
-    font-size: 9px;
-    letter-spacing: 3px;
-    padding: 3px 8px;
-    border: 2px solid;
-    margin-bottom: 12px;
-  }
-  .card--cocktail .card-tag { color: var(--neon-pink); border-color: var(--neon-pink); }
-  .card--video .card-tag { color: var(--neon-cyan); border-color: var(--neon-cyan); }
-  .card--game .card-tag { color: var(--neon-green); border-color: var(--neon-green); }
-
-  .card-title {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-size: 22px;
-    font-weight: 900;
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-  .card--cocktail .card-title { color: var(--neon-pink); text-shadow: 0 0 8px rgba(255,62,164,0.5); }
-  .card--video .card-title { color: var(--neon-cyan); text-shadow: 0 0 8px rgba(0,245,255,0.5); }
-  .card--game .card-title { color: var(--neon-green); text-shadow: 0 0 8px rgba(57,255,20,0.5); }
-
-  .card-desc {
-    font-size: 12px;
-    line-height: 1.8;
-    color: rgba(240,230,255,0.75);
-    margin-bottom: 20px;
-  }
-
-  .card-cta {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 11px;
-    letter-spacing: 3px;
-    padding: 8px 16px;
-    border: 2px solid;
-    transition: background 0.15s, color 0.15s;
-  }
-  .card--cocktail .card-cta { color: var(--neon-pink); border-color: var(--neon-pink); }
-  .card--cocktail .card-cta:hover { background: var(--neon-pink); color: var(--bg); }
-  .card--video .card-cta { color: var(--neon-cyan); border-color: var(--neon-cyan); }
-  .card--video .card-cta:hover { background: var(--neon-cyan); color: var(--bg); }
-  .card--game .card-cta { color: var(--neon-green); border-color: var(--neon-green); }
-  .card--game .card-cta:hover { background: var(--neon-green); color: var(--bg); }
-
-  .card-corner {
-    position: absolute;
-    top: 8px; right: 8px;
-    font-size: 9px; letter-spacing: 1px;
-    opacity: 0.4;
-  }
-
-  /* ── Footer ── */
-  footer {
-    position: relative; z-index: 2;
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: rgba(240,230,255,0.3);
-    border-top: 1px solid rgba(255,62,164,0.15);
-  }
-  footer span { color: var(--neon-pink); }
-
-  /* ── Decorative pixel shapes ── */
-  .deco {
-    position: absolute; z-index: 1;
-    image-rendering: pixelated;
-    pointer-events: none;
-    animation: spin var(--spd, 20s) linear infinite;
-    opacity: 0.15;
-  }
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  /* Pixel marquee bar */
-  .marquee-bar {
-    position: relative; z-index: 2;
-    background: var(--neon-pink);
-    padding: 8px 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .marquee-inner {
-    display: inline-block;
-    animation: marquee 18s linear infinite;
-    font-size: 11px;
-    letter-spacing: 6px;
-    color: var(--bg);
-    font-family: 'DotGothic16', monospace;
-  }
-  @keyframes marquee {
-    from { transform: translateX(100vw); }
-    to { transform: translateX(-100%); }
-  }
-
-  /* ── Global Nav Links ── */
-  .nav-links {
-    display: flex; gap: 20px; align-items: center;
-  }
-  .nav-links a {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--neon-cyan);
-    text-decoration: none;
-    padding: 4px 8px;
-    border: 1px solid transparent;
-    transition: border-color 0.2s, text-shadow 0.2s;
-  }
-  .nav-links a:hover {
-    border-color: var(--neon-cyan);
-    text-shadow: 0 0 8px var(--neon-cyan);
-  }
-  @media (max-width: 768px) {
-    nav { flex-wrap: wrap; gap: 8px; padding: 12px 16px; }
-    .nav-logo { font-size: 14px; width: 100%; text-align: center; }
-    .nav-links { flex-wrap: wrap; justify-content: center; gap: 8px; width: 100%; }
-    .nav-tag { display: none; }
-  }
-
-  /* ── About Section ── */
-  .about-section {
-    position: relative; z-index: 2;
-    max-width: 800px;
-    margin: 0 auto 60px;
-    padding: 0 24px;
-  }
-  .about-box {
-    border: 3px solid var(--neon-cyan);
-    box-shadow: 6px 6px 0 var(--neon-cyan);
-    padding: 40px;
-    background: rgba(20, 8, 50, 0.9);
-  }
-  .about-box .section-tag {
-    font-size: 9px; letter-spacing: 6px;
-    color: var(--neon-cyan); margin-bottom: 16px;
-  }
-  .about-box h2 {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-size: 22px; font-weight: 900;
-    color: var(--neon-cyan);
-    text-shadow: 0 0 8px rgba(0,245,255,0.5);
-    margin-bottom: 24px;
-  }
-  .about-content {
-    font-size: 12px; line-height: 2;
-    color: rgba(240,230,255,0.8);
-    display: flex; flex-direction: column; gap: 20px;
-  }
-  .about-content dt {
-    color: var(--neon-cyan); letter-spacing: 2px; margin-bottom: 6px;
-  }
-  .about-content dd { margin-left: 0; }
-
-  /* ── Contact Section ── */
-  .contact-section {
-    position: relative; z-index: 2;
-    max-width: 800px;
-    margin: 0 auto 80px;
-    padding: 0 24px;
-  }
-  .contact-box {
-    border: 3px solid var(--neon-yellow);
-    box-shadow: 6px 6px 0 var(--neon-yellow);
-    padding: 40px;
-    background: rgba(20, 8, 50, 0.9);
-  }
-  .contact-box .section-tag {
-    font-size: 9px; letter-spacing: 6px;
-    color: var(--neon-yellow); margin-bottom: 16px;
-  }
-  .contact-box h2 {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-size: 22px; font-weight: 900;
-    color: var(--neon-yellow);
-    text-shadow: 0 0 8px rgba(255,230,0,0.5);
-    margin-bottom: 24px;
-  }
-  .contact-form {
-    display: flex; flex-direction: column; gap: 20px;
-  }
-  .contact-form label {
-    font-size: 11px; letter-spacing: 2px;
-    color: var(--neon-yellow); display: block; margin-bottom: 6px;
-  }
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 10px 12px;
-    background: rgba(0,0,0,0.4);
-    border: 2px solid rgba(255,230,0,0.3);
-    color: var(--text);
-    font-family: 'DotGothic16', monospace;
-    font-size: 13px;
-    transition: border-color 0.2s;
-  }
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    outline: none;
-    border-color: var(--neon-yellow);
-    box-shadow: 0 0 8px rgba(255,230,0,0.3);
-  }
-  .contact-form textarea { min-height: 120px; resize: vertical; }
-  .contact-form button {
-    align-self: flex-start;
-    padding: 10px 28px;
-    background: transparent;
-    border: 2px solid var(--neon-yellow);
-    color: var(--neon-yellow);
-    font-family: 'DotGothic16', monospace;
-    font-size: 12px;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s;
-  }
-  .contact-form button:hover {
-    background: var(--neon-yellow);
-    color: var(--bg);
-  }
-</style>
-</head>
-<body>
-
-<!-- Stars -->
-<div id="stars"></div>
-
-<!-- Decorative floating pixel shapes -->
-<svg class="deco" style="top:10%;left:5%;width:60px;--spd:25s" viewBox="0 0 8 8"><rect x="2" y="0" width="4" height="2" fill="#ff3fa4"/><rect x="0" y="2" width="8" height="4" fill="#ff3fa4"/><rect x="2" y="6" width="4" height="2" fill="#ff3fa4"/></svg>
-<svg class="deco" style="top:30%;right:4%;width:40px;--spd:18s" viewBox="0 0 8 8"><rect x="3" y="0" width="2" height="2" fill="#00f5ff"/><rect x="0" y="3" width="8" height="2" fill="#00f5ff"/><rect x="3" y="6" width="2" height="2" fill="#00f5ff"/></svg>
-<svg class="deco" style="top:60%;left:3%;width:50px;--spd:30s" viewBox="0 0 8 8"><rect x="0" y="0" width="8" height="8" fill="none" stroke="#ffe600" stroke-width="2"/><rect x="2" y="2" width="4" height="4" fill="#ffe600"/></svg>
-<svg class="deco" style="top:75%;right:6%;width:36px;--spd:22s" viewBox="0 0 8 8"><polygon points="4,0 8,8 0,8" fill="#bf5fff"/></svg>
-
-<!-- Nav -->
-<nav>
-  <div class="nav-logo">★ TETINLAB ★</div>
-  <div class="nav-links">
-    <a href="#top">ホーム</a>
-    <a href="#projects">プロジェクト</a>
-    <a href="#about">運営者情報</a>
-    <a href="#contact">お問い合わせ</a>
-    <a href="#privacy">プライバシーポリシー</a>
+  <section class="section games-section" id="games"><div class="section-head section-head-light reveal"><div><p class="section-code">// BUILT IN THIS GARAGE</p><h2>作った<span>ゲーム</span></h2></div><p>GAME #01から、ひとつずつ。<br>公開後の数字もアップデートします。</p></div><div class="games-grid"><article class="game-card reveal">
+    <a href="games/pearl-gem.html" class="game-card-link" aria-label="パールジェムの詳細">
+      <div class="game-visual  accent-lime" aria-hidden="true">
+    <span class="visual-grid"></span><span class="orb orb-a"></span><span class="orb orb-b"></span>
+    <span class="pixel-creature"><i></i><i></i><i></i><i></i></span>
+    <span class="game-number">#06</span>
+    <span class="scanline"></span>
   </div>
-</nav>
-
-<!-- Marquee -->
-<div class="marquee-bar">
-  <div class="marquee-inner">
-    ★ COCKTAIL DATABASE &nbsp;★&nbsp; SHORT VIDEO &nbsp;★&nbsp; GAME DEVELOPMENT &nbsp;★&nbsp; COCKTAIL DATABASE &nbsp;★&nbsp; SHORT VIDEO &nbsp;★&nbsp; GAME DEVELOPMENT &nbsp;★&nbsp; COCKTAIL DATABASE &nbsp;★&nbsp; SHORT VIDEO &nbsp;★&nbsp; GAME DEVELOPMENT &nbsp;★&nbsp;
+      <div class="game-card-body">
+        <div class="eyebrow"><span>GAME #06</span><span>NOW TUNING</span></div>
+        <h3>パールジェム</h3>
+        <p>宝石のきらめきと手触りをAIと一緒に磨き込む、最新の魔改造プロジェクト。</p>
+        <div class="tag-row"><span>Android</span><span>AI assisted</span></div>
+        <span class="text-link">開発ログを見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+  </article><article class="game-card reveal">
+    <a href="games/arrow-surusuru.html" class="game-card-link" aria-label="矢印スルスルの詳細">
+      <div class="game-visual  accent-yellow" aria-hidden="true">
+    <span class="visual-grid"></span><span class="orb orb-a"></span><span class="orb orb-b"></span>
+    <span class="pixel-creature"><i></i><i></i><i></i><i></i></span>
+    <span class="game-number">#05</span>
+    <span class="scanline"></span>
   </div>
-</div>
-
-<!-- Hero -->
-<section class="hero" id="top">
-
-  <!-- Pixel art hero illustration -->
-  <div class="hero-pixel-art">
-    <svg width="220" height="120" viewBox="0 0 55 30" xmlns="http://www.w3.org/2000/svg" style="image-rendering:pixelated">
-      <!-- Cocktail glass (left) -->
-      <rect x="4" y="2" width="2" height="2" fill="#ff3fa4"/>
-      <rect x="2" y="4" width="6" height="2" fill="#ff3fa4"/>
-      <rect x="0" y="6" width="10" height="2" fill="#ff6fc8"/>
-      <rect x="2" y="8" width="6" height="2" fill="#ff6fc8"/>
-      <rect x="4" y="10" width="2" height="4" fill="#ff3fa4"/>
-      <rect x="2" y="14" width="6" height="2" fill="#ff3fa4"/>
-      <!-- straw -->
-      <rect x="8" y="2" width="1" height="8" fill="#ffe600"/>
-      <!-- cherry -->
-      <rect x="7" y="1" width="2" height="2" fill="#ff0055"/>
-      <!-- shine -->
-      <rect x="1" y="7" width="2" height="2" fill="rgba(255,255,255,0.4)"/>
-
-      <!-- Camera / video (center) -->
-      <rect x="20" y="8" width="16" height="10" rx="0" fill="#00f5ff" opacity="0.9"/>
-      <rect x="22" y="10" width="12" height="6" fill="#00a0cc"/>
-      <rect x="36" y="10" width="4" height="2" fill="#00f5ff"/>
-      <rect x="36" y="14" width="4" height="2" fill="#00f5ff"/>
-      <!-- lens -->
-      <rect x="25" y="11" width="4" height="4" fill="#0d0520"/>
-      <rect x="26" y="12" width="2" height="2" fill="#00f5ff" opacity="0.5"/>
-      <!-- rec dot -->
-      <rect x="33" y="9" width="2" height="2" fill="#ff3fa4"/>
-
-      <!-- Game controller (right) -->
-      <rect x="43" y="8" width="10" height="8" fill="#39ff14" opacity="0.9"/>
-      <rect x="42" y="10" width="12" height="4" fill="#39ff14" opacity="0.7"/>
-      <!-- dpad -->
-      <rect x="44" y="10" width="1" height="3" fill="#0d0520"/>
-      <rect x="43" y="11" width="3" height="1" fill="#0d0520"/>
-      <!-- buttons -->
-      <rect x="51" y="10" width="2" height="2" fill="#ff3fa4"/>
-      <rect x="49" y="12" width="2" height="2" fill="#ffe600"/>
-
-      <!-- Ground line -->
-      <rect x="0" y="22" width="55" height="2" fill="#bf5fff" opacity="0.5"/>
-      <!-- Stars -->
-      <rect x="15" y="3" width="2" height="2" fill="#ffe600" opacity="0.8"/>
-      <rect x="38" y="2" width="2" height="2" fill="#00f5ff" opacity="0.8"/>
-      <rect x="18" y="18" width="1" height="1" fill="#ff3fa4" opacity="0.6"/>
-      <rect x="42" y="5" width="1" height="1" fill="#39ff14" opacity="0.6"/>
-    </svg>
+      <div class="game-card-body">
+        <div class="eyebrow"><span>GAME #05</span><span>RELEASED</span></div>
+        <h3>矢印スルスル</h3>
+        <p>矢印をスルスル動かす、直感操作のカジュアルゲーム。</p>
+        <div class="tag-row"><span>Android</span><span>AI assisted</span></div>
+        <span class="text-link">開発ログを見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+  </article><article class="game-card reveal">
+    <a href="games/jewelist.html" class="game-card-link" aria-label="ジュエリストの詳細">
+      <div class="game-visual  accent-violet" aria-hidden="true">
+    <span class="visual-grid"></span><span class="orb orb-a"></span><span class="orb orb-b"></span>
+    <span class="pixel-creature"><i></i><i></i><i></i><i></i></span>
+    <span class="game-number">#04</span>
+    <span class="scanline"></span>
   </div>
-
-  <h1 class="hero-title">AIを活用して独自に構成・編集したクリエイティブ・ポートフォリオ<span class="hero-blink"></span></h1>
-  <p class="hero-sub">普段は物流企業にてシステム管理を担当し、日々変化する要件に対する論理的な解決策の構築や技術検証を行っています。この「PORTFOLIO.EXE」は、そうした業務上のシステム運用とは別軸で、純粋な「モノづくりの楽しさ」と「最新技術の実験」を形にするために立ち上げた個人の開発拠点です。
-ハードウェアからソフトウェアまで横断的に触れることを信条としており、Raspberry Piを用いた独自のポータブル環境の構築から、HTML・JavaScriptを用いたレトロテイストなブラウザゲームの開発、アプリストア向けのハイパーカジュアルゲームの公開まで、多岐にわたる制作活動を行っています。
-現在は特に、自律型AIエージェントやローカルLLMといった最新のAI開発環境の検証に注力しています。本サイトに掲載している「カクテルデータベース」もその応用実験の一つであり、構造化データとAI画像生成技術を組み合わせた独自のコンテンツです。また、自身のゲーム開発経験で得た知見は、初心者向けのマニュアルとして還元しています。
-最新のAI技術と、古き良きゲームメカニクスの融合。このポートフォリオを通じて、技術の面白さと新しい表現を発信していきます。</p>
-
-  <p class="scroll-hint">▼ SCROLL DOWN ▼</p>
-</section>
-
-<!-- Section label -->
-<div class="section-label" id="projects">── PROJECTS ──</div>
-
-<!-- Cards -->
-<div class="cards-wrapper">
-
-  <!-- Cocktail DB -->
-  <a class="card card--cocktail" href="/cocktail/" id="card-cocktail">
-    <div class="card-corner">01/03</div>
-    <div class="card-art">
-      <!-- Pixel cocktail bar scene -->
-      <svg width="200" height="130" viewBox="0 0 50 32" xmlns="http://www.w3.org/2000/svg" style="image-rendering:pixelated">
-        <!-- Bar counter -->
-        <rect x="0" y="24" width="50" height="8" fill="#3d1a2e"/>
-        <rect x="0" y="22" width="50" height="2" fill="#ff3fa4" opacity="0.8"/>
-        <!-- Bottles -->
-        <rect x="5" y="10" width="3" height="12" fill="#cc2266"/>
-        <rect x="6" y="8" width="1" height="2" fill="#cc2266"/>
-        <rect x="5" y="14" width="3" height="2" fill="#ff6fc8" opacity="0.5"/>
-        <rect x="11" y="12" width="3" height="10" fill="#ff8800"/>
-        <rect x="12" y="10" width="1" height="2" fill="#ff8800"/>
-        <rect x="17" y="9" width="3" height="13" fill="#4466ff"/>
-        <rect x="18" y="7" width="1" height="2" fill="#4466ff"/>
-        <!-- Martini glass -->
-        <rect x="28" y="10" width="1" height="1" fill="#00f5ff"/>
-        <rect x="27" y="11" width="3" height="1" fill="#00f5ff"/>
-        <rect x="26" y="12" width="5" height="1" fill="#ff6fc8" opacity="0.7"/>
-        <rect x="27" y="13" width="3" height="1" fill="#00f5ff"/>
-        <rect x="28" y="14" width="1" height="3" fill="#00f5ff"/>
-        <rect x="27" y="17" width="3" height="1" fill="#00f5ff"/>
-        <!-- Highball glass -->
-        <rect x="35" y="12" width="4" height="10" fill="none"/>
-        <rect x="35" y="12" width="1" height="10" fill="#00f5ff" opacity="0.5"/>
-        <rect x="38" y="12" width="1" height="10" fill="#00f5ff" opacity="0.5"/>
-        <rect x="35" y="20" width="4" height="2" fill="#00f5ff" opacity="0.3"/>
-        <rect x="36" y="13" width="2" height="6" fill="#00f5ff" opacity="0.15"/>
-        <!-- Straw -->
-        <rect x="37" y="10" width="1" height="8" fill="#ffe600"/>
-        <!-- Stars/sparkles -->
-        <rect x="23" y="6" width="2" height="2" fill="#ff3fa4" opacity="0.9"/>
-        <rect x="43" y="8" width="2" height="2" fill="#ffe600" opacity="0.8"/>
-        <rect x="3" y="6" width="1" height="1" fill="#00f5ff" opacity="0.7"/>
-        <rect x="44" y="18" width="1" height="1" fill="#ff3fa4" opacity="0.5"/>
-      </svg>
-    </div>
-    <div class="card-body">
-      <div class="card-tag">DATABASE</div>
-      <h2 class="card-title">カクテルデータベース</h2>
-      <p class="card-desc">100種類以上のカクテルレシピを網羅。単なる材料の紹介だけでなく、AIによる高品質な写実画像と共に、味のプロフィール（甘み・度数・TPO）を独自の視点で構造化データとしてまとめています。今後も随時更新予定です</p>
-      <div class="card-cta">► OPEN SITE</div>
-    </div>
-  </a>
-
-  <!-- Short Video -->
-  <a class="card card--video" href="/movie/" id="card-video">
-    <div class="card-corner">02/03</div>
-    <div class="card-art">
-      <!-- Pixel video/film scene -->
-      <svg width="200" height="130" viewBox="0 0 50 32" xmlns="http://www.w3.org/2000/svg" style="image-rendering:pixelated">
-        <!-- Screen / monitor -->
-        <rect x="8" y="4" width="34" height="20" fill="#0a2233"/>
-        <rect x="8" y="4" width="34" height="2" fill="#00f5ff" opacity="0.8"/>
-        <rect x="8" y="22" width="34" height="2" fill="#00f5ff" opacity="0.8"/>
-        <rect x="8" y="4" width="2" height="20" fill="#00f5ff" opacity="0.8"/>
-        <rect x="40" y="4" width="2" height="20" fill="#00f5ff" opacity="0.8"/>
-        <!-- Screen content (pixel landscape) -->
-        <rect x="10" y="10" width="30" height="12" fill="#001a2c"/>
-        <rect x="10" y="16" width="30" height="6" fill="#00264d"/>
-        <!-- mountains -->
-        <rect x="12" y="14" width="2" height="2" fill="#00a0cc" opacity="0.7"/>
-        <rect x="11" y="15" width="4" height="1" fill="#00a0cc" opacity="0.7"/>
-        <rect x="20" y="12" width="2" height="4" fill="#00c8ff" opacity="0.6"/>
-        <rect x="19" y="13" width="4" height="3" fill="#00c8ff" opacity="0.6"/>
-        <rect x="32" y="13" width="2" height="3" fill="#00a0cc" opacity="0.5"/>
-        <!-- Play button -->
-        <rect x="22" y="7" width="2" height="6" fill="#ffe600" opacity="0"/>
-        <rect x="22" y="7" width="1" height="1" fill="#ffe600"/>
-        <rect x="22" y="8" width="2" height="1" fill="#ffe600"/>
-        <rect x="22" y="9" width="3" height="1" fill="#ffe600"/>
-        <rect x="22" y="10" width="2" height="1" fill="#ffe600"/>
-        <rect x="22" y="11" width="1" height="1" fill="#ffe600"/>
-        <!-- REC indicator -->
-        <rect x="10" y="6" width="2" height="2" fill="#ff3fa4"/>
-        <rect x="13" y="6" width="6" height="2" fill="#ff3fa4" opacity="0.7"/>
-        <!-- Stand -->
-        <rect x="22" y="24" width="6" height="2" fill="#00f5ff" opacity="0.6"/>
-        <rect x="20" y="26" width="10" height="2" fill="#00f5ff" opacity="0.4"/>
-        <!-- Stars -->
-        <rect x="5" y="8" width="1" height="1" fill="#00f5ff" opacity="0.6"/>
-        <rect x="46" y="6" width="2" height="2" fill="#00f5ff" opacity="0.5"/>
-        <rect x="4" y="20" width="2" height="2" fill="#ff3fa4" opacity="0.4"/>
-      </svg>
-    </div>
-    <div class="card-body">
-      <div class="card-tag">VIDEO</div>
-      <h2 class="card-title">ショート動画</h2>
-      <p class="card-desc">レトロゲームを3D画像にして何のゲームかあてる動画等を公開中！</p>
-      <div class="card-cta">► OPEN SITE</div>
-    </div>
-  </a>
-
-  <!-- Game Dev -->
-  <a class="card card--game" href="/unity/" id="card-game">
-    <div class="card-corner">03/03</div>
-    <div class="card-art">
-      <!-- Pixel game scene -->
-      <svg width="200" height="130" viewBox="0 0 50 32" xmlns="http://www.w3.org/2000/svg" style="image-rendering:pixelated">
-        <!-- Sky -->
-        <rect x="0" y="0" width="50" height="32" fill="#001a00"/>
-        <!-- Ground -->
-        <rect x="0" y="24" width="50" height="8" fill="#0a3300"/>
-        <rect x="0" y="22" width="50" height="2" fill="#39ff14" opacity="0.7"/>
-        <!-- Platform blocks -->
-        <rect x="6" y="18" width="8" height="4" fill="#39ff14" opacity="0.4"/>
-        <rect x="6" y="18" width="8" height="1" fill="#39ff14" opacity="0.7"/>
-        <rect x="28" y="14" width="10" height="4" fill="#39ff14" opacity="0.4"/>
-        <rect x="28" y="14" width="10" height="1" fill="#39ff14" opacity="0.7"/>
-        <!-- Pixel character -->
-        <rect x="10" y="14" width="4" height="4" fill="#ffe600"/>
-        <rect x="11" y="13" width="2" height="1" fill="#ffe600"/>
-        <!-- eyes -->
-        <rect x="11" y="15" width="1" height="1" fill="#0d0520"/>
-        <rect x="13" y="15" width="1" height="1" fill="#0d0520"/>
-        <!-- body -->
-        <rect x="10" y="18" width="4" height="4" fill="#ff3fa4"/>
-        <rect x="9" y="19" width="1" height="2" fill="#ff3fa4"/>
-        <rect x="14" y="19" width="1" height="2" fill="#ff3fa4"/>
-        <!-- legs -->
-        <rect x="10" y="22" width="2" height="2" fill="#ffe600"/>
-        <rect x="12" y="22" width="2" height="2" fill="#ffe600"/>
-        <!-- coin -->
-        <rect x="32" y="10" width="3" height="3" fill="#ffe600"/>
-        <rect x="33" y="9" width="1" height="1" fill="#ffe600"/>
-        <rect x="33" y="12" width="1" height="1" fill="#ffe600"/>
-        <!-- Pixel enemy -->
-        <rect x="38" y="20" width="4" height="4" fill="#ff3fa4"/>
-        <rect x="37" y="21" width="6" height="2" fill="#ff3fa4"/>
-        <rect x="38" y="19" width="2" height="1" fill="#ff3fa4"/>
-        <rect x="39" y="22" width="1" height="1" fill="#0d0520"/>
-        <rect x="41" y="22" width="1" height="1" fill="#0d0520"/>
-        <!-- Stars in sky -->
-        <rect x="4" y="4" width="1" height="1" fill="#39ff14" opacity="0.7"/>
-        <rect x="18" y="6" width="2" height="2" fill="#ffe600" opacity="0.6"/>
-        <rect x="32" y="4" width="1" height="1" fill="#00f5ff" opacity="0.7"/>
-        <rect x="46" y="8" width="2" height="2" fill="#39ff14" opacity="0.5"/>
-        <!-- HP bar -->
-        <rect x="2" y="2" width="10" height="2" fill="#333" opacity="0.8"/>
-        <rect x="2" y="2" width="7" height="2" fill="#39ff14" opacity="0.9"/>
-        <rect x="14" y="2" width="6" height="2" fill="#ffe600" opacity="0.7"/>
-      </svg>
-    </div>
-    <div class="card-body">
-      <div class="card-tag">GAME</div>
-      <h2 class="card-title">Flare Engine 2D Tools<br>初心者マニュアル</h2>
-      <p class="card-desc">Unity向け2Dツール『Flare Engine』の導入に特化したマニュアル。日本語リファレンスが少ない中で、自身が2Dアクションゲームを開発した際の知見を元に、ゼロから完成までを体系的に解説しています</p>
-      <div class="card-cta">► OPEN SITE</div>
-    </div>
-  </a>
-
-</div>
-
-<!-- About -->
-<div class="section-label">── ABOUT ──</div>
-<section class="about-section" id="about">
-  <div class="about-box">
-    <div class="section-tag">ABOUT</div>
-    <h2>運営者情報</h2>
-    <dl class="about-content">
-      <div>
-        <dt>■ 運営者</dt>
-        <dd>TETIN（個人運営）</dd>
+      <div class="game-card-body">
+        <div class="eyebrow"><span>GAME #04</span><span>RELEASED</span></div>
+        <h3>ジュエリスト</h3>
+        <p>宝石をテーマにしたパズルゲーム。AI活用ログを順次公開予定。</p>
+        <div class="tag-row"><span>Android</span></div>
+        <span class="text-link">開発ログを見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
       </div>
-      <div>
-        <dt>■ サイト名</dt>
-        <dd>Tetinlab（テティンラボ）</dd>
-      </div>
-      <div>
-        <dt>■ サイトURL</dt>
-        <dd><a href="https://tetinlab.com/" style="color:var(--neon-cyan);text-decoration:none;border-bottom:1px solid var(--neon-cyan);">https://tetinlab.com/</a></dd>
-      </div>
-      <div>
-        <dt>■ 活動内容</dt>
-        <dd>普段は物流企業にてシステム管理を担当しています。本サイトでは、業務とは別軸で取り組んでいる個人開発の成果物を公開しています。主にUnityを用いた2Dゲーム開発、HTML/JavaScriptによるブラウザゲーム制作、AIを活用したコンテンツ生成の実験を行っています。</dd>
-      </div>
-      <div>
-        <dt>■ 専門分野・スキル</dt>
-        <dd>Unity（Flare Engine 2D Tools）／ HTML・CSS・JavaScript ／ Capacitorによるモバイルアプリ化 ／ ローカルLLM・自律型AIエージェント検証 ／ Raspberry Piを用いたポータブル環境構築 ／ システム運用・技術検証</dd>
-      </div>
-      <div>
-        <dt>■ 実績</dt>
-        <dd>
-          ・カクテルデータベース — AI画像生成と構造化データを組み合わせた100種類以上のカクテル情報サイト<br>
-          ・Flare Engine 2D Tools 初心者マニュアル — 日本語リファレンスが少ないUnity向け2Dツールの導入解説<br>
-          ・ハイパーカジュアルゲーム開発・公開（Google Play Store）
-        </dd>
-      </div>
-    </dl>
+    </a>
+  </article><article class="game-card reveal">
+    <a href="games/beat-2048.html" class="game-card-link" aria-label="Beat2048の詳細">
+      <div class="game-visual  accent-cyan" aria-hidden="true">
+    <span class="visual-grid"></span><span class="orb orb-a"></span><span class="orb orb-b"></span>
+    <span class="pixel-creature"><i></i><i></i><i></i><i></i></span>
+    <span class="game-number">#03</span>
+    <span class="scanline"></span>
   </div>
-</section>
-
-<!-- Contact -->
-<div class="section-label">── CONTACT ──</div>
-<section class="contact-section" id="contact">
-  <div class="contact-box">
-    <div class="section-tag">CONTACT</div>
-    <h2>お問い合わせ</h2>
-    <p style="font-size:12px;line-height:2;color:rgba(240,230,255,0.8);margin-bottom:24px;">当サイトに関するご意見・ご質問は、下記フォームよりお気軽にお問い合わせください。</p>
-    <form class="contact-form" action="https://formspree.io/f/maqkqnll" method="POST">
-      <div>
-        <label for="contact-name">■ お名前</label>
-        <input type="text" id="contact-name" name="name" required placeholder="お名前を入力してください">
+      <div class="game-card-body">
+        <div class="eyebrow"><span>GAME #03</span><span>RELEASED</span></div>
+        <h3>Beat2048</h3>
+        <p>数字パズルの気持ちよさをビート感覚で再構成した実験作。</p>
+        <div class="tag-row"><span>Android</span></div>
+        <span class="text-link">開発ログを見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
       </div>
-      <div>
-        <label for="contact-email">■ メールアドレス</label>
-        <input type="email" id="contact-email" name="email" required placeholder="メールアドレスを入力してください">
-      </div>
-      <div>
-        <label for="contact-message">■ お問い合わせ内容</label>
-        <textarea id="contact-message" name="message" required placeholder="お問い合わせ内容を入力してください"></textarea>
-      </div>
-      <button type="submit">► SEND MESSAGE</button>
-    </form>
+    </a>
+  </article><article class="game-card reveal">
+    <a href="games/gun-sprint.html" class="game-card-link" aria-label="ガンスプリントの詳細">
+      <div class="game-visual  accent-orange" aria-hidden="true">
+    <span class="visual-grid"></span><span class="orb orb-a"></span><span class="orb orb-b"></span>
+    <span class="pixel-creature"><i></i><i></i><i></i><i></i></span>
+    <span class="game-number">#02</span>
+    <span class="scanline"></span>
   </div>
-</section>
-
-<!-- Privacy Policy -->
-<section id="privacy" style="position:relative;z-index:2;max-width:800px;margin:0 auto 80px;padding:0 24px;">
-  <div style="border:3px solid var(--neon-purple);box-shadow:6px 6px 0 var(--neon-purple);padding:40px;background:rgba(20,8,50,0.9);">
-    <div style="font-size:9px;letter-spacing:6px;color:var(--neon-purple);margin-bottom:16px;">PRIVACY POLICY</div>
-    <h2 style="font-family:'M PLUS Rounded 1c',sans-serif;font-size:22px;font-weight:900;color:var(--neon-purple);text-shadow:0 0 8px rgba(191,95,255,0.5);margin-bottom:32px;">プライバシーポリシー</h2>
-
-    <div style="font-size:12px;line-height:2;color:rgba(240,230,255,0.8);display:flex;flex-direction:column;gap:28px;">
-
-      <div>
-        <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ 個人情報の取り扱いについて</p>
-        <p>当サイトでは、お問い合わせの際にお名前・メールアドレス等の個人情報をご入力いただく場合があります。取得した個人情報は、お問い合わせへの返答・連絡のみを目的として利用し、それ以外の目的には使用いたしません。</p>
+      <div class="game-card-body">
+        <div class="eyebrow"><span>GAME #02</span><span>RELEASED</span></div>
+        <h3>ガンスプリント</h3>
+        <p>スピードと射撃を組み合わせたアクションゲーム。</p>
+        <div class="tag-row"><span>Android</span></div>
+        <span class="text-link">開発ログを見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
       </div>
-
-      <div>
-        <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ アクセス解析ツールについて</p>
-        <p>当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。このGoogleアナリティクスはデータ収集のためにCookieを使用しています。このデータは匿名で収集されており、個人を特定するものではありません。Cookieの使用を無効にする場合は、ブラウザの設定からCookieを無効にしてください。詳細については<a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank" rel="noopener" style="color:var(--neon-cyan);text-decoration:none;border-bottom:1px solid var(--neon-cyan);">Googleアナリティクス利用規約</a>をご確認ください。</p>
-      </div>
-
-　　　<div>
-        <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ 広告の配信について</p>
-        <p>当サイトでは、第三者配信の広告サービス「Google AdSense」を利用しています。
-このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報（Cookie）を使用することがあります。なお、Cookieには氏名、住所、メールアドレス、電話番号は含まれません。
-Googleアドセンスに関して、このプロセスの詳細やこのような情報が広告配信事業者に使用されないようにする方法については、<a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener" style="color:var(--neon-cyan);text-decoration:none;border-bottom:1px solid var(--neon-cyan);">Googleポリシーと規約</a>をご覧ください。</p>
-      </div>
-      
-      <div>
-        <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ 免責事項</p>
-        <p>当サイトのコンテンツ・情報については、可能な限り正確な情報を提供するよう努めておりますが、正確性・安全性を保証するものではありません。当サイトに掲載された内容によって生じた損害等については、いかなる責任も負いかねます。</p>
-      </div>
-
-      <div>
-        <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ 著作権について</p>
-        <p>当サイトで掲載している文章・画像・動画等のコンテンツの著作権は、運営者に帰属します。無断転載・複製は禁止します。</p>
-      </div>
-
-      <div>
-        <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ リンクについて</p>
-        <p>当サイトへのリンクは基本的に自由です。ただし、内容が公序良俗に反するサイト、または当サイトの内容を誤解させるようなリンクはお断りします。</p>
-      </div>
-
-      <div>
-        <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ プライバシーポリシーの変更</p>
-        <p>当サイトは、個人情報に関して適用される日本の法令を遵守するとともに、本プライバシーポリシーの内容を適宜見直し、改善に努めます。変更が生じた場合は当ページにて告知します。</p>
-      </div>
-
-      <div style="padding-top:16px;border-top:1px solid rgba(191,95,255,0.3);">
-        <p style="color:var(--neon-purple);margin-bottom:8px;letter-spacing:2px;">■ お問い合わせ</p>
-        <p>当サイトに関するご意見・ご質問は、<a href="#contact" style="color:var(--neon-cyan);text-decoration:none;border-bottom:1px solid var(--neon-cyan);">お問い合わせフォーム</a>よりお願いいたします。</p>
-        <p style="margin-top:16px;font-size:11px;opacity:0.5;">制定日：2025年4月26日　／　最終更新日：2026年5月20日</p>
-      </div>
-
-    </div>
+    </a>
+  </article><article class="game-card reveal">
+    <a href="games/ice-climb-proto.html" class="game-card-link" aria-label="アイスクライム_プロトの詳細">
+      <div class="game-visual  accent-blue" aria-hidden="true">
+    <span class="visual-grid"></span><span class="orb orb-a"></span><span class="orb orb-b"></span>
+    <span class="pixel-creature"><i></i><i></i><i></i><i></i></span>
+    <span class="game-number">#01</span>
+    <span class="scanline"></span>
   </div>
-</section>
+      <div class="game-card-body">
+        <div class="eyebrow"><span>GAME #01</span><span>PROTOTYPE</span></div>
+        <h3>アイスクライム_プロト</h3>
+        <p>まず動くものを作るところから始めた、原点となるプロトタイプ。</p>
+        <div class="tag-row"><span>Android</span></div>
+        <span class="text-link">開発ログを見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+  </article></div><div class="games-footer reveal"><p><b>06</b> GAMES & COUNTING</p><a class="button button-primary" href="https://play.google.com/store/apps/developer?id=TETIN" target="_blank" rel="noopener">Google Playで見る <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div></section>
 
-<!-- Footer -->
-<footer>
-  <p>MADE WITH <span>♥</span> — 制作物ポートフォリオ &copy; 2026</p>
-</footer>
+  <section class="section beginner-section"><div class="beginner-box reveal"><div class="beginner-copy"><p class="section-code">// BEGINNER SAFE ZONE</p><h2>わからない言葉は、<br><span>ここで分解。</span></h2><p>専門用語を、別の専門用語で説明しません。<br>いま必要な意味だけ、短く。</p><a class="text-link" href="#glossary">初心者向け用語集へ <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div><div class="term-cloud" id="glossary"><div><b>AAB</b><span>Google Playへ渡す<br>アプリの箱</span></div><div><b>API</b><span>サービス同士の<br>受け渡し窓口</span></div><div><b>AdMob</b><span>ゲームに広告を<br>表示する仕組み</span></div><div><b>Git</b><span>変更を巻き戻せる<br>作業記録</span></div><div><b>Unity</b><span>ゲームを組み立てる<br>開発ツール</span></div><div><b>APK</b><span>端末へ入れて試す<br>アプリの形</span></div></div></div></section>
 
-<script>
-// Generate pixel stars
-const starsEl = document.getElementById('stars');
-for (let i = 0; i < 80; i++) {
-  const s = document.createElement('div');
-  s.className = 'star';
-  s.style.left = Math.random() * 100 + 'vw';
-  s.style.top = Math.random() * 100 + 'vh';
-  s.style.setProperty('--d', (2 + Math.random() * 4) + 's');
-  s.style.setProperty('--delay', (Math.random() * 4) + 's');
-  if (Math.random() > 0.7) { s.style.width = '4px'; s.style.height = '4px'; }
-  starsEl.appendChild(s);
-}
-
-// Card entrance animation
-const cards = document.querySelectorAll('.card');
-cards.forEach((c, i) => {
-  c.style.opacity = '0';
-  c.style.transform = 'translateY(30px)';
-  setTimeout(() => {
-    c.style.transition = 'opacity 0.5s, transform 0.5s';
-    c.style.opacity = '1';
-    c.style.transform = 'none';
-  }, 200 + i * 150);
-});
-
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'none';
-    }
-  });
-}, { threshold: 0.1 });
-cards.forEach(c => obs.observe(c));
-</script>
-</body>
-</html>
+  <section class="final-cta"><div class="bolt bolt-left"></div><div class="bolt bolt-right"></div><p>CAN I BUILD A GAME WITH AI?</p><h2>「できるかな？」を、<br><span>動くゲームに。</span></h2><a class="button button-primary" href="#roadmap">魔改造をはじめる <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><small>NO EXPERIENCE REQUIRED / CURIOSITY RECOMMENDED</small></section>
+</main><footer class="site-footer">
+    <div class="footer-brand"><span class="brand-mark"><i></i><i></i><i></i></span><div><b>できるかな魔改造</b><small>AI GAME LAB. / BY TETIN</small></div></div>
+    <p>失敗は、次の魔改造パーツ。</p>
+    <div class="footer-links"><a href="#roadmap">ゲームを作る</a><a href="#lab">実験室</a><a href="#games">作ったゲーム</a></div>
+    <small class="copyright">© 2026 TETIN. BUILT WITH AI, TESTED BY HUMAN.</small>
+  </footer><script src="assets/main.js" defer></script></body></html>
